@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Login | NextRole</title>
+    <title>Register | NextRole</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
@@ -77,16 +77,26 @@
                     onclick="window.location.href='index.html'">
                     <span class="material-symbols-outlined font-bold text-3xl">hub</span>
                 </div>
-                <h2 class="text-3xl font-extrabold tracking-tight" data-i18n="login-welcome">Welcome Back</h2>
-                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm leading-relaxed" data-i18n="login-subtitle">
-                    Please enter your details to sign in</p>
+                <h2 class="text-3xl font-extrabold tracking-tight" data-i18n="reg-title">Create Account</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm leading-relaxed" data-i18n="reg-subtitle">
+                    Join our community of professionals</p>
             </div>
 
-            <!-- Login Form -->
-            <form class="space-y-6" id="loginForm">
+            <!-- Register Form -->
+            <form class="space-y-5" id="registerForm">
                 <div>
-                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2.5 ml-1"
-                        data-i18n="login-email">Email Address</label>
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 ml-1"
+                        data-i18n="reg-name">Full Name</label>
+                    <div class="relative group">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">person</span>
+                        <input type="text" required placeholder="John Doe" class="input-accent">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 ml-1"
+                        data-i18n="reg-email">Email Address</label>
                     <div class="relative group">
                         <span
                             class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">mail</span>
@@ -95,8 +105,8 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2.5 ml-1"
-                        data-i18n="login-password">Password</label>
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 ml-1"
+                        data-i18n="reg-password">Password</label>
                     <div class="relative group">
                         <span
                             class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">lock</span>
@@ -104,24 +114,21 @@
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between px-1">
-                    <div class="flex items-center">
-                        <input id="remember-me" name="remember-me" type="checkbox"
-                            class="h-4 w-4 text-primary focus:ring-primary border-slate-300 dark:border-slate-700 rounded-md bg-transparent">
-                        <label for="remember-me"
-                            class="ml-2.5 block text-xs font-bold text-slate-500 dark:text-slate-400"
-                            data-i18n="login-remember">Remember me</label>
-                    </div>
-                    <div>
-                        <a href="#"
-                            class="text-xs font-extrabold text-primary hover:text-primary-light transition-colors"
-                            data-i18n="login-forgot">Forgot Password?</a>
-                    </div>
+                <div class="flex items-start gap-3 px-1">
+                    <input id="terms" name="terms" type="checkbox" required
+                        class="mt-1 h-4 w-4 text-primary focus:ring-primary border-slate-300 dark:border-slate-700 rounded-md bg-transparent">
+                    <label for="terms"
+                        class="block text-xs font-bold text-slate-500 dark:text-slate-400 leading-normal">
+                        <span data-i18n="reg-i-agree">I agree to the</span>
+                        <a href="#" class="text-primary hover:underline" data-i18n="reg-terms">Terms of Service</a>
+                        <span data-i18n="reg-and">and</span>
+                        <a href="#" class="text-primary hover:underline" data-i18n="reg-privacy">Privacy Policy</a>
+                    </label>
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-gradient-to-r from-primary to-primary-light text-white py-4 px-4 rounded-2xl text-sm font-bold shadow-xl shadow-primary/20 hover:shadow-primary/30 transform hover:-translate-y-1 transition-all">
-                    <span data-i18n="login-signin">Sign In</span>
+                    class="w-full bg-gradient-to-r from-primary to-primary-light text-white py-4 px-4 rounded-2xl text-sm font-bold shadow-xl shadow-primary/20 hover:shadow-primary/30 transform hover:-translate-y-1 transition-all mt-4">
+                    <span data-i18n="reg-btn">Create Account</span>
                 </button>
             </form>
 
@@ -139,13 +146,13 @@
 
             <!-- Social Logins -->
             <div class="grid grid-cols-2 gap-4">
-                <button id="googleLogin"
+                <button id="googleReg"
                     class="flex items-center justify-center gap-3 py-3 border border-slate-200 dark:border-slate-800 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-bold text-sm shadow-sm group">
                     <img src="https://www.google.com/favicon.ico"
                         class="w-5 h-5 grayscale group-hover:grayscale-0 transition-all">
                     <span class="dark:text-slate-300">Google</span>
                 </button>
-                <button id="linkedinLogin"
+                <button id="linkedinReg"
                     class="flex items-center justify-center gap-3 py-3 border border-slate-200 dark:border-slate-800 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-bold text-sm shadow-sm group">
                     <img src="https://www.linkedin.com/favicon.ico"
                         class="w-5 h-5 grayscale group-hover:grayscale-0 transition-all">
@@ -153,37 +160,38 @@
                 </button>
             </div>
 
-            <!-- Footer Links -->
-            <div class="mt-10 text-center space-y-6">
-                <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">
-                    <span data-i18n="login-no-account">Don't have an account?</span>
-                    <a id="registerLink" href="register.html"
-                        class="text-primary font-extrabold hover:text-primary-light transition-colors"
-                        data-i18n="login-signup">Sign up for free</a>
+            <div class="mt-8 text-center">
+                <p class="text-slate-500 dark:text-slate-400 text-xs font-bold" data-i18n="reg-have-account">Already
+                    have an account?
+                    <a id="loginLink" href="login.html"
+                        class="text-primary hover:text-primary-light ml-1 font-extrabold transition-colors"
+                        data-i18n="reg-login">Sign in</a>
                 </p>
-                <div class="pt-4 border-t border-slate-100 dark:border-slate-800/50">
-                    <a href="index.html"
-                        class="inline-flex items-center gap-2.5 text-xs font-bold text-slate-400 hover:text-primary transition-all group uppercase tracking-widest"
-                        data-i18n="login-back">
-                        <span
-                            class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
-                        Back to Homepage
-                    </a>
-                </div>
+                <a href="index.html"
+                    class="inline-block mt-8 text-xs font-extrabold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors uppercase tracking-widest"
+                    data-i18n="login-back">Back to Homepage</a>
             </div>
         </div>
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-20 overflow-hidden">
+        <div class="absolute top-1/4 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 -left-12 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse"
+            style="animation-delay: 1s"></div>
     </div>
 
     <!-- Core Logic -->
     <script src="main.js"></script>
     <script>
-        document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+        // Form Handling
+        document.getElementById('registerForm')?.addEventListener('submit', (e) => {
             e.preventDefault();
-            handleAuthSuccess('Login successful! Redirecting...');
+            handleRegSuccess('Account created successfully! Welcome to NextRole.');
         });
 
-        // Social Logins
-        const handleAuthSuccess = (message) => {
+        // Social Registration
+        const handleRegSuccess = (message) => {
             localStorage.setItem('isLoggedIn', 'true');
             const params = new URLSearchParams(window.location.search);
             const returnUrl = params.get('returnUrl') || 'index.html';
@@ -191,22 +199,22 @@
             window.location.href = returnUrl;
         };
 
-        document.getElementById('googleLogin')?.addEventListener('click', () => {
-            handleAuthSuccess('Logging in with Google... Redirecting back to your task!');
+        document.getElementById('googleReg')?.addEventListener('click', () => {
+            handleRegSuccess('Registering with Google... Welcome to NextRole!');
         });
 
-        document.getElementById('linkedinLogin')?.addEventListener('click', () => {
-            handleAuthSuccess('Logging in with LinkedIn... Redirecting back to your task!');
+        document.getElementById('linkedinReg')?.addEventListener('click', () => {
+            handleRegSuccess('Registering with LinkedIn... Welcome to NextRole!');
         });
 
-        // Pass returnUrl to register link
+        // Pass returnUrl to login link
         window.addEventListener('load', () => {
             const params = new URLSearchParams(window.location.search);
             const returnUrl = params.get('returnUrl');
             if (returnUrl) {
-                const registerLink = document.getElementById('registerLink');
-                if (registerLink) {
-                    registerLink.href = `register.html?returnUrl=${encodeURIComponent(returnUrl)}`;
+                const loginLink = document.getElementById('loginLink');
+                if (loginLink) {
+                    loginLink.href = `login.html?returnUrl=${encodeURIComponent(returnUrl)}`;
                 }
             }
         });

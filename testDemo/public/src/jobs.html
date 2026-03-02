@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Find Jobs | NextRole</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <script src="translations.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { "primary": "#1e40af", "primary-light": "#3b82f6" },
+                    fontFamily: { "display": ["Manrope", "sans-serif"] },
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="font-display bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="flex min-h-screen flex-col">
+        <header
+            class="sticky top-0 z-50 w-full border-b border-slate-100 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm px-6 md:px-12 py-4">
+            <div class="mx-auto flex max-w-7xl items-center justify-between">
+                <div class="flex items-center gap-2 group cursor-pointer" onclick="window.location.href='index.html'">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white group-hover:rotate-12 transition-transform">
+                        <span class="material-symbols-outlined font-bold">hub</span>
+                    </div>
+                    <h2 class="text-2xl font-extrabold tracking-tight dark:text-white">NextRole</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-500 dark:text-slate-400">
+                    <!-- Navigation items will be injected by main.js -->
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button onclick="window.toggleTheme()"
+                        class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <span class="material-symbols-outlined dark:text-white">contrast</span>
+                    </button>
+                    <button onclick="window.setLanguage(window.getCurrentLang() === 'en' ? 'km' : 'en')"
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-700">
+                        <span class="material-symbols-outlined text-sm text-primary">language</span>
+                        <span class="text-xs font-bold uppercase dark:text-white" id="lang-indicator">EN/ខ្មែរ</span>
+                    </button>
+                    <button onclick="window.location.href='login.html'"
+                        class="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-lg"
+                        data-i18n="login-btn">Login</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow">
+            <!-- Hero Search -->
+            <section class="bg-primary py-16 px-6 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <div
+                        class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl -translate-x-1/2 -translate-y-1/2">
+                    </div>
+                </div>
+                <div class="mx-auto max-w-4xl text-center relative z-10 animate__animated animate__fadeIn">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6" data-i18n="jobs-hero-title">Find
+                        Your Dream Job</h1>
+                    <p class="text-blue-100 mb-10 text-lg" data-i18n="jobs-hero-subtitle">Browse through thousands of
+                        high-quality job openings across all industries.</p>
+                    <div
+                        class="bg-white dark:bg-slate-900 p-2 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-2 max-w-3xl mx-auto">
+                        <div class="flex-1 flex items-center px-4 border-r dark:border-slate-800">
+                            <span class="material-symbols-outlined text-slate-400 mr-2">search</span>
+                            <input type="text" id="jobs-search-query" placeholder="Job title or keyword"
+                                data-i18n="search-placeholder"
+                                class="bg-transparent border-none focus:ring-0 w-full text-sm dark:text-white font-medium">
+                        </div>
+                        <div class="flex-1 flex items-center px-4">
+                            <span class="material-symbols-outlined text-slate-400 mr-2">location_on</span>
+                            <select id="jobs-search-location"
+                                class="bg-transparent border-none focus:ring-0 w-full text-sm dark:text-white font-medium appearance-none cursor-pointer">
+                                <option value="" data-i18n="loc-all">All Locations</option>
+                                <option value="Phnom Penh" data-i18n="loc-pp">Phnom Penh</option>
+                                <option value="Banteay Meanchey" data-i18n="loc-bmc">Banteay Meanchey</option>
+                                <option value="Battambang" data-i18n="loc-btb">Battambang</option>
+                                <option value="Kampong Cham" data-i18n="loc-kpc">Kampong Cham</option>
+                                <option value="Kampong Chhnang" data-i18n="loc-kch">Kampong Chhnang</option>
+                                <option value="Kampong Speu" data-i18n="loc-ksp">Kampong Speu</option>
+                                <option value="Kampong Thom" data-i18n="loc-kt">Kampong Thom</option>
+                                <option value="Kampot" data-i18n="loc-kp">Kampot</option>
+                                <option value="Kandal" data-i18n="loc-kd">Kandal</option>
+                                <option value="Kep" data-i18n="loc-kep">Kep</option>
+                                <option value="Koh Kong" data-i18n="loc-kk">Koh Kong</option>
+                                <option value="Kratié" data-i18n="loc-kr">Kratié</option>
+                                <option value="Mondulkiri" data-i18n="loc-mk">Mondulkiri</option>
+                                <option value="Oddar Meanchey" data-i18n="loc-omc">Oddar Meanchey</option>
+                                <option value="Pailin" data-i18n="loc-pl">Pailin</option>
+                                <option value="Preah Sihanouk" data-i18n="loc-sh">Preah Sihanouk</option>
+                                <option value="Preah Vihear" data-i18n="loc-pv">Preah Vihear</option>
+                                <option value="Prey Veng" data-i18n="loc-pvg">Prey Veng</option>
+                                <option value="Pursat" data-i18n="loc-ps">Pursat</option>
+                                <option value="Ratanakiri" data-i18n="loc-rk">Ratanakiri</option>
+                                <option value="Siem Reap" data-i18n="loc-sr">Siem Reap</option>
+                                <option value="Stung Treng" data-i18n="loc-st">Stung Treng</option>
+                                <option value="Svay Rieng" data-i18n="loc-srn">Svay Rieng</option>
+                                <option value="Takéo" data-i18n="loc-tk">Takéo</option>
+                                <option value="Tboung Khmum" data-i18n="loc-tkm">Tboung Khmum</option>
+                                <option value="Remote" data-i18n="loc-remote">Remote</option>
+                            </select>
+                        </div>
+                        <button onclick="window.handleJobsSearch()"
+                            class="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-800 transition-all whitespace-nowrap"
+                            data-i18n="search-btn">Search</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mx-auto max-w-7xl px-6 py-12">
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Filters Sidebar -->
+                    <aside class="w-full lg:w-72 space-y-8 animate__animated animate__fadeInLeft">
+                        <div>
+                            <h3 class="text-lg font-extrabold mb-4 dark:text-white" data-i18n="filter-title">Filters
+                            </h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label
+                                        class="text-sm font-bold text-slate-500 uppercase tracking-tighter block mb-3"
+                                        data-i18n="filter-type">Job Type</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" id="filter-fulltime"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()" checked>
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="filter-fulltime">Full-time</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" id="filter-contract"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="filter-contract">Contract</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" id="filter-remote"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="filter-remote">Remote</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="text-sm font-bold text-slate-500 uppercase tracking-tighter block mb-3"
+                                        data-i18n="cat-title">Job Category</label>
+                                    <div class="space-y-2 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="category" value="Marketing"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="cat-marketing">Marketing</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="category" value="Engineering"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="cat-engineering">Engineering</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="category" value="Design"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="cat-design">Design</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="category" value="Finance"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="cat-finance">Finance</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="category" value="Healthcare"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="cat-healthcare">Healthcare</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="category" value="Data Science"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="cat-data">Data Science</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="category" value="Support"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="cat-support">Support</span>
+                                        </label>
+                                        <label class="flex items-center gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="category" value="Logistics"
+                                                class="rounded text-primary focus:ring-primary dark:bg-slate-900 dark:border-slate-700"
+                                                onchange="window.handleFilterChange()">
+                                            <span
+                                                class="text-sm dark:text-slate-300 group-hover:text-primary transition-colors"
+                                                data-i18n="cat-logistics">Logistics</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="text-sm font-bold text-slate-500 uppercase tracking-tighter block mb-3"
+                                        data-i18n="filter-salary">Salary Range</label>
+                                    <input type="range" class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-slate-400 mt-2 font-bold">
+                                        <span>$0</span>
+                                        <span>$20k+</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="text-sm font-bold text-slate-500 uppercase tracking-tighter block mb-3"
+                                        data-i18n="filter-experience">Experience Level</label>
+                                    <select
+                                        class="w-full rounded-xl border-slate-200 dark:border-slate-800 dark:bg-slate-900 dark:text-white text-sm focus:ring-primary">
+                                        <option>All Levels</option>
+                                        <option>Entry Level</option>
+                                        <option>Mid Level</option>
+                                        <option>Senior Level</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Job Listings Feed -->
+                    <div class="flex-1 space-y-6 animate__animated animate__fadeIn">
+                        <!-- Google Job Card -->
+                        <div class="job-card bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:border-primary/20 transition-all group"
+                            data-category="Engineering" data-type="Full-time">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center shrink-0">
+                                    <img src="https://www.google.com/favicon.ico" class="w-8 h-8">
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                                        <h4
+                                            class="text-xl font-extrabold dark:text-white group-hover:text-primary transition-colors">
+                                            Software Engineer</h4>
+                                        <div class="flex gap-2">
+                                            <span
+                                                class="bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full">Google</span>
+                                            <span
+                                                class="bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                                                data-i18n="filter-fulltime">Full-time</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">apartment</span>
+                                            <span>Google Cambodia</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">location_on</span>
+                                            <span data-i18n="job-location">Phnom Penh, KH</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">currency_exchange</span>
+                                            <span>$3,000 - $5,500</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">schedule</span>
+                                            <span>Just now</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-6 border-t dark:border-slate-800">
+                                        <button class="text-primary font-extrabold text-sm hover:underline"
+                                            data-i18n="job-details">View Details</button>
+                                        <button
+                                            class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+                                            onclick="window.handleApplyNow('Software Engineer at Google')"
+                                            data-i18n="job-apply">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 1 -->
+                        <div class="job-card bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:border-primary/20 transition-all group"
+                            data-category="Design" data-type="Full-time">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-orange-600">code</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                                        <h4
+                                            class="text-xl font-extrabold dark:text-white group-hover:text-primary transition-colors">
+                                            Senior UX Designer</h4>
+                                        <span
+                                            class="bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                                            data-i18n="filter-fulltime">Full-time</span>
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">apartment</span>
+                                            <span>TechFlow Solutions</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">location_on</span>
+                                            <span data-i18n="job-location">Phnom Penh, KH</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">currency_exchange</span>
+                                            <span>$1,500 - $2,500</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">schedule</span>
+                                            <span>2d ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-6 border-t dark:border-slate-800">
+                                        <button class="text-primary font-extrabold text-sm hover:underline"
+                                            data-i18n="job-details">View Details</button>
+                                        <button
+                                            class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+                                            onclick="window.handleApplyNow('Senior UX Designer')"
+                                            data-i18n="job-apply">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 2 -->
+                        <div class="job-card bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:border-primary/20 transition-all group"
+                            data-category="Engineering" data-type="Remote">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-blue-600">terminal</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                                        <h4
+                                            class="text-xl font-extrabold dark:text-white group-hover:text-primary transition-colors">
+                                            Backend Developer (Node.js)</h4>
+                                        <span
+                                            class="bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                                            data-i18n="filter-remote">Remote</span>
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">apartment</span>
+                                            <span>CyberSoft Ind.</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">location_on</span>
+                                            <span>Remote, Global</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">currency_exchange</span>
+                                            <span>$2,000 - $3,500</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">schedule</span>
+                                            <span>5h ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-6 border-t dark:border-slate-800">
+                                        <button class="text-primary font-extrabold text-sm hover:underline"
+                                            data-i18n="job-details">View Details</button>
+                                        <button
+                                            class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+                                            onclick="window.handleApplyNow('Backend Developer (Node.js)')"
+                                            data-i18n="job-apply">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 3 -->
+                        <div class="job-card bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:border-primary/20 transition-all group"
+                            data-category="Design" data-type="Full-time">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-rose-600">palette</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                                        <h4
+                                            class="text-xl font-extrabold dark:text-white group-hover:text-primary transition-colors">
+                                            Product Designer</h4>
+                                        <span
+                                            class="bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                                            data-i18n="filter-fulltime">Full-time</span>
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">apartment</span>
+                                            <span>Creative Studio 7</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">location_on</span>
+                                            <span>Siem Reap, KH</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">currency_exchange</span>
+                                            <span>$1,200 - $1,800</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">schedule</span>
+                                            <span>1w ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-6 border-t dark:border-slate-800">
+                                        <button class="text-primary font-extrabold text-sm hover:underline"
+                                            data-i18n="job-details">View Details</button>
+                                        <button
+                                            class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+                                            onclick="window.handleApplyNow('Product Designer')"
+                                            data-i18n="job-apply">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 4 -->
+                        <div class="job-card bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:border-primary/20 transition-all group"
+                            data-category="Marketing" data-type="Full-time">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-yellow-600">trending_up</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                                        <h4
+                                            class="text-xl font-extrabold dark:text-white group-hover:text-primary transition-colors">
+                                            Marketing Manager</h4>
+                                        <span
+                                            class="bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                                            data-i18n="filter-fulltime">Full-time</span>
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">apartment</span>
+                                            <span>Growth Hive</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">location_on</span>
+                                            <span data-i18n="job-location">Phnom Penh, KH</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">currency_exchange</span>
+                                            <span>$1,200 - $2,000</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">schedule</span>
+                                            <span>3d ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-6 border-t dark:border-slate-800">
+                                        <button class="text-primary font-extrabold text-sm hover:underline"
+                                            data-i18n="job-details">View Details</button>
+                                        <button
+                                            class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+                                            onclick="window.handleApplyNow('Marketing Manager')"
+                                            data-i18n="job-apply">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 5 -->
+                        <div class="job-card bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:border-primary/20 transition-all group"
+                            data-category="Engineering" data-type="Contract">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-indigo-600">verified_user</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                                        <h4
+                                            class="text-xl font-extrabold dark:text-white group-hover:text-primary transition-colors">
+                                            QA Engineer</h4>
+                                        <span
+                                            class="bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                                            data-i18n="filter-contract">Contract</span>
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">apartment</span>
+                                            <span>SecureLogix</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">location_on</span>
+                                            <span>Remote, Global</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">currency_exchange</span>
+                                            <span>$1,800 - $2,800</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">schedule</span>
+                                            <span>1d ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-6 border-t dark:border-slate-800">
+                                        <button class="text-primary font-extrabold text-sm hover:underline"
+                                            data-i18n="job-details">View Details</button>
+                                        <button
+                                            class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+                                            onclick="window.handleApplyNow('QA Engineer')" data-i18n="job-apply">Apply
+                                            Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 6 -->
+                        <div class="job-card bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:border-primary/20 transition-all group"
+                            data-category="Support" data-type="Full-time">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-cyan-600">groups</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                                        <h4
+                                            class="text-xl font-extrabold dark:text-white group-hover:text-primary transition-colors">
+                                            HR Specialist</h4>
+                                        <span
+                                            class="bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                                            data-i18n="filter-fulltime">Full-time</span>
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">apartment</span>
+                                            <span>PeopleFirst</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">location_on</span>
+                                            <span data-i18n="job-location">Phnom Penh, KH</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">currency_exchange</span>
+                                            <span>$800 - $1,300</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">schedule</span>
+                                            <span>4d ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-6 border-t dark:border-slate-800">
+                                        <button class="text-primary font-extrabold text-sm hover:underline"
+                                            data-i18n="job-details">View Details</button>
+                                        <button
+                                            class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+                                            onclick="window.handleApplyNow('HR Specialist')" data-i18n="job-apply">Apply
+                                            Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Card 7 -->
+                        <div class="job-card bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:border-primary/20 transition-all group"
+                            data-category="Data Science" data-type="Full-time">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-violet-600">database</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                                        <h4
+                                            class="text-xl font-extrabold dark:text-white group-hover:text-primary transition-colors">
+                                            Data Analyst</h4>
+                                        <span
+                                            class="bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                                            data-i18n="filter-fulltime">Full-time</span>
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400 font-medium mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">apartment</span>
+                                            <span>InsightCorp</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">location_on</span>
+                                            <span>Remote, Global</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">currency_exchange</span>
+                                            <span>$2,200 - $3,200</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-lg">schedule</span>
+                                            <span>6h ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-6 border-t dark:border-slate-800">
+                                        <button class="text-primary font-extrabold text-sm hover:underline"
+                                            data-i18n="job-details">View Details</button>
+                                        <button
+                                            class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+                                            onclick="window.handleApplyNow('Data Analyst')" data-i18n="job-apply">Apply
+                                            Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-slate-900 text-slate-300 py-16 px-6">
+            <div class="mx-auto max-w-7xl grid md:grid-cols-4 gap-12 border-b border-slate-800 pb-12 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+                            <span class="material-symbols-outlined font-bold">hub</span>
+                        </div>
+                        <h2 class="text-2xl font-extrabold tracking-tight text-white">NextRole</h2>
+                    </div>
+                    <p class="max-w-sm mb-6 leading-relaxed" data-i18n="footer-desc">Connecting world-class talent with
+                        future leaders.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6" data-i18n="footer-explore">Explore</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a class="hover:text-primary transition-colors" href="jobs.html">Browse Jobs</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">How It Works</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6" data-i18n="footer-legal">Legal</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-500">
+                <p>© 2026 NextRole. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
