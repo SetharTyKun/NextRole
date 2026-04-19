@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Login | NextRole</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="../js/translations.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { "primary": "#1e40af", "primary-light": "#3b82f6" },
+                    fontFamily: { "display": ["Manrope", "sans-serif"] },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: 0.1, transform: 'scale(1)' },
+                            '50%': { opacity: 0.2, transform: 'scale(1.1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base { 
+            body { 
+                @apply antialiased text-slate-900 bg-slate-50 dark:bg-slate-950 dark:text-white font-display transition-colors duration-300; 
+            } 
+        }
+        .glass {
+            @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/20 dark:border-slate-800/50;
+        }
+        .input-accent {
+            @apply w-full pl-12 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-sm;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+    <!-- Background Accents -->
+    <div
+        class="absolute top-0 -left-20 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[100px] -z-10 animate-pulse-slow">
+    </div>
+    <div class="absolute bottom-0 -right-20 w-[30rem] h-[30rem] bg-primary-light/10 rounded-full blur-[100px] -z-10 animate-pulse-slow"
+        style="animation-delay: 2s"></div>
+
+    <div class="w-full max-w-md">
+        <div class="glass p-8 md:p-10 rounded-[2.5rem] shadow-2xl relative">
+            <!-- Navigation Utilities -->
+            <div class="absolute top-6 left-6 right-6 flex justify-between items-center">
+                <!-- Language Switcher -->
+                <button onclick="window.setLanguage(window.getCurrentLang() === 'en' ? 'km' : 'en')"
+                    class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-700 glass">
+                    <span class="material-symbols-outlined text-sm text-primary">language</span>
+                    <span class="text-[10px] font-bold tracking-wider uppercase" id="lang-indicator">EN/ខ្មែរ</span>
+                </button>
+
+                <!-- Theme Toggle -->
+                <button onclick="window.toggleTheme()"
+                    class="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-700 glass">
+                    <span class="material-symbols-outlined text-xl">contrast</span>
+                </button>
+            </div>
+
+            <!-- Logo & Heading -->
+            <div class="flex flex-col items-center mt-6 mb-10 text-center">
+                <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-light text-white mb-6 shadow-xl shadow-primary/20 transform hover:scale-110 transition-transform cursor-pointer"
+                    onclick="window.location.href='../index.html'">
+                    <span class="material-symbols-outlined font-bold text-3xl">hub</span>
+                </div>
+                <h2 class="text-3xl font-extrabold tracking-tight" data-i18n="login-welcome">Welcome Back</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm leading-relaxed" data-i18n="login-subtitle">
+                    Please enter your details to sign in</p>
+            </div>
+
+            <!-- Login Form -->
+            <form class="space-y-6" id="loginForm">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2.5 ml-1"
+                        data-i18n="login-email">Email Address</label>
+                    <div class="relative group">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">mail</span>
+                        <input type="email" required placeholder="name@company.com" class="input-accent">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2.5 ml-1"
+                        data-i18n="login-password">Password</label>
+                    <div class="relative group">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">lock</span>
+                        <input type="password" required placeholder="••••••••" class="input-accent">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between px-1">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox"
+                            class="h-4 w-4 text-primary focus:ring-primary border-slate-300 dark:border-slate-700 rounded-md bg-transparent">
+                        <label for="remember-me"
+                            class="ml-2.5 block text-xs font-bold text-slate-500 dark:text-slate-400"
+                            data-i18n="login-remember">Remember me</label>
+                    </div>
+                    <div>
+                        <a href="#"
+                            class="text-xs font-extrabold text-primary hover:text-primary-light transition-colors"
+                            data-i18n="login-forgot">Forgot Password?</a>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-primary to-primary-light text-white py-4 px-4 rounded-2xl text-sm font-bold shadow-xl shadow-primary/20 hover:shadow-primary/30 transform hover:-translate-y-1 transition-all">
+                    <span data-i18n="login-signin">Sign In</span>
+                </button>
+            </form>
+
+            <!-- Social Divider -->
+            <div class="relative my-8">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-slate-200 dark:border-slate-800"></div>
+                </div>
+                <div
+                    class="relative flex justify-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                    <span class="bg-white dark:bg-slate-900 px-4 rounded-full" data-i18n="login-or">Or continue
+                        with</span>
+                </div>
+            </div>
+
+            <!-- Social Logins -->
+            <div class="grid grid-cols-2 gap-4">
+                <button id="googleLogin"
+                    class="flex items-center justify-center gap-3 py-3 border border-slate-200 dark:border-slate-800 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-bold text-sm shadow-sm group">
+                    <img src="https://www.google.com/favicon.ico"
+                        class="w-5 h-5 grayscale group-hover:grayscale-0 transition-all">
+                    <span class="dark:text-slate-300">Google</span>
+                </button>
+                <button id="linkedinLogin"
+                    class="flex items-center justify-center gap-3 py-3 border border-slate-200 dark:border-slate-800 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-bold text-sm shadow-sm group">
+                    <img src="https://www.linkedin.com/favicon.ico"
+                        class="w-5 h-5 grayscale group-hover:grayscale-0 transition-all">
+                    <span class="dark:text-slate-300">LinkedIn</span>
+                </button>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="mt-10 text-center space-y-6">
+                <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <span data-i18n="login-no-account">Don't have an account?</span>
+                    <a id="registerLink" href="register.html"
+                        class="text-primary font-extrabold hover:text-primary-light transition-colors"
+                        data-i18n="login-signup">Sign up for free</a>
+                </p>
+                <div class="pt-4 border-t border-slate-100 dark:border-slate-800/50">
+                    <a href="../index.html"
+                        class="inline-flex items-center gap-2.5 text-xs font-bold text-slate-400 hover:text-primary transition-all group uppercase tracking-widest"
+                        data-i18n="login-back">
+                        <span
+                            class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                        Back to Homepage
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Logic -->
+    <script src="../js/main.js"></script>
+    <script>
+        document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleAuthSuccess('Login successful! Redirecting...');
+        });
+
+        // Social Logins
+        const handleAuthSuccess = (message) => {
+            localStorage.setItem('isLoggedIn', 'true');
+            const params = new URLSearchParams(window.location.search);
+            const returnUrl = params.get('returnUrl') || 'index.html';
+            alert(message);
+            window.location.href = returnUrl;
+        };
+
+        document.getElementById('googleLogin')?.addEventListener('click', () => {
+            handleAuthSuccess('Logging in with Google... Redirecting back to your task!');
+        });
+
+        document.getElementById('linkedinLogin')?.addEventListener('click', () => {
+            handleAuthSuccess('Logging in with LinkedIn... Redirecting back to your task!');
+        });
+
+        // Pass returnUrl to register link
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const returnUrl = params.get('returnUrl');
+            if (returnUrl) {
+                const registerLink = document.getElementById('registerLink');
+                if (registerLink) {
+                    registerLink.href = `register.html?returnUrl=${encodeURIComponent(returnUrl)}`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

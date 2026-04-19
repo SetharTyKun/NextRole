@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Media & Insights | NextRole</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <script src="../js/translations.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { "primary": "#1e40af", "primary-light": "#3b82f6" },
+                    fontFamily: { "display": ["Manrope", "sans-serif"] },
+                }
+            }
+        }
+    </script>
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="font-display bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="flex min-h-screen flex-col">
+        <header
+            class="sticky top-0 z-50 w-full border-b border-slate-100 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm px-6 md:px-12 py-4">
+            <div class="mx-auto flex max-w-7xl items-center justify-between">
+                <div class="flex items-center gap-2 group cursor-pointer" onclick="window.location.href='../index.html'">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white group-hover:rotate-12 transition-transform">
+                        <span class="material-symbols-outlined font-bold">hub</span>
+                    </div>
+                    <h2 class="text-2xl font-extrabold tracking-tight dark:text-white">NextRole</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-500 dark:text-slate-400">
+                    <!-- Navigation items will be injected by main.js -->
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button onclick="window.toggleTheme()"
+                        class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-symbols-outlined dark:text-white">contrast</span>
+                    </button>
+                    <!-- Language Switcher -->
+                    <button onclick="window.setLanguage(window.getCurrentLang() === 'en' ? 'km' : 'en')"
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-700">
+                        <span class="material-symbols-outlined text-sm text-primary">language</span>
+                        <span class="text-xs font-bold uppercase dark:text-white" id="lang-indicator">EN/ខ្មែរ</span>
+                    </button>
+                    <button onclick="window.location.href='login.html'"
+                        class="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-lg hover:shadow-lg active:scale-95 transition-all"
+                        data-i18n="login-btn">Login</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow">
+            <!-- Hero -->
+            <section class="bg-slate-900 py-20 px-6 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20">
+                    <div
+                        class="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-overlay filter blur-3xl translate-x-1/2 -translate-y-1/2">
+                    </div>
+                </div>
+                <div class="mx-auto max-w-4xl text-center relative z-10 animate__animated animate__fadeIn">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6" data-i18n="media-hero-title">Media &
+                        Insights</h1>
+                    <p class="text-slate-400 mb-0 text-lg" data-i18n="media-hero-subtitle">Stay updated with the latest
+                        news, career tips, and success stories.</p>
+                </div>
+            </section>
+
+            <section class="py-20 px-6 bg-slate-50 dark:bg-slate-900 reveal">
+                <div class="mx-auto max-w-7xl">
+                    <div
+                        class="grid lg:grid-cols-2 gap-12 items-center bg-white dark:bg-slate-950 rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="aspect-video lg:aspect-square bg-slate-200 dark:bg-slate-800 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+                            </div>
+                            <div
+                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                                <div
+                                    class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white">
+                                    <span class="material-symbols-outlined text-4xl">play_arrow</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-12 lg:p-16">
+                            <span class="text-primary font-bold text-sm tracking-widest uppercase mb-6 block"
+                                data-i18n="media-featured-title">Featured Story</span>
+                            <h2 class="text-3xl md:text-4xl font-extrabold mb-6 dark:text-white leading-tight">The
+                                Future of Remote Tech Work in Cambodia: 2026 Outlook</h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-lg mb-8 leading-relaxed">As the digital
+                                landscape evolves, we explore how Cambodian developers are shaping the global tech
+                                ecosystem from their home offices in Phnom Penh and beyond.</p>
+                            <button
+                                class="bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all flex items-center gap-3 group"
+                                data-i18n="media-featured-btn">
+                                Read Full Story
+                                <span
+                                    class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest News -->
+            <section id="news" class="py-24 px-6 reveal">
+                <div class="mx-auto max-w-7xl">
+                    <div class="flex justify-between items-end mb-12">
+                        <h2 class="text-3xl font-extrabold dark:text-white" data-i18n="media-news-title">Latest News
+                        </h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- News Card 1 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800 group h-full">
+                            <div class="aspect-video bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6">
+                                    <span
+                                        class="bg-primary text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full mb-3 inline-block">Flash
+                                        News</span>
+                                    <h3 class="text-white text-xl font-bold">NextRole Partners with Top Tech Hubs in SEA
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2">We are thrilled
+                                    to announce our new strategic partnership with leading technology incubators across
+                                    Southeast Asia to provide exclusive opportunities for our users.</p>
+                                <a href="#"
+                                    class="text-primary font-bold text-sm inline-flex items-center gap-2 group">Read
+                                    Article <span
+                                        class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></a>
+                            </div>
+                        </div>
+                        <!-- News Card 2 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800 group h-full">
+                            <div class="aspect-video bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6">
+                                    <span
+                                        class="bg-cyan-600 text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full mb-3 inline-block">Product
+                                        Update</span>
+                                    <h3 class="text-white text-xl font-bold">AI Support for CV Optimization Now Live
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2">Our latest
+                                    platform update introduces AI-powered CV suggestions to help you stand out to hiring
+                                    managers instantly.</p>
+                                <a href="#"
+                                    class="text-primary font-bold text-sm inline-flex items-center gap-2 group">Read
+                                    Article <span
+                                        class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Section -->
+            <section id="blog" class="py-20 px-6 bg-slate-100 dark:bg-slate-900 reveal">
+                <div class="mx-auto max-w-7xl">
+                    <h2 class="text-3xl font-extrabold dark:text-white mb-12 text-center" data-i18n="media-blog-title">
+                        Career Blog</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Blog Post 1 -->
+                        <div
+                            class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300">
+                            <span class="text-primary font-bold text-xs uppercase mb-3 block">Interview Tips</span>
+                            <h4 class="text-lg font-bold dark:text-white mb-4">How to Ace Your Next Virtual Interview: 5
+                                Pro Tips</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Master the art of online
+                                interviews with these essential strategies for success.</p>
+                            <div class="flex items-center gap-3 border-t dark:border-slate-700 pt-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-200"></div>
+                                <div class="text-[10px] font-bold uppercase tracking-tight">
+                                    <p class="dark:text-white">Sok San</p>
+                                    <p class="text-slate-400">Career Coach</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 2 -->
+                        <div
+                            class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300">
+                            <span class="text-emerald-600 font-bold text-xs uppercase mb-3 block">Work Life</span>
+                            <h4 class="text-lg font-bold dark:text-white mb-4">Remote Work: Staying Productive and
+                                Connected</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Learn how to maintain a healthy
+                                work-life balance while working from your home office.</p>
+                            <div class="flex items-center gap-3 border-t dark:border-slate-700 pt-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-200"></div>
+                                <div class="text-[10px] font-bold uppercase tracking-tight">
+                                    <p class="dark:text-white">Vann Leakhena</p>
+                                    <p class="text-slate-400">Content Strategist</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 3 -->
+                        <div
+                            class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300">
+                            <span class="text-purple-600 font-bold text-xs uppercase mb-3 block">Upskilling</span>
+                            <h4 class="text-lg font-bold dark:text-white mb-4">Top 10 Soft Skills Most Desired by Tech
+                                Employers</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Beyond technical prowess, these
+                                are the skills that will make you a truly valuable team player.</p>
+                            <div class="flex items-center gap-3 border-t dark:border-slate-700 pt-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-200"></div>
+                                <div class="text-[10px] font-bold uppercase tracking-tight">
+                                    <p class="dark:text-white">Chen Da</p>
+                                    <p class="text-slate-400">Senior Recruiter</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 4 -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300 reveal"
+                            style="transition-delay: 0.1s">
+                            <span class="text-blue-600 font-bold text-xs uppercase mb-3 block">Tech Trends</span>
+                            <h4 class="text-lg font-bold dark:text-white mb-4">Why Web3 is Gaining Momentum in Cambodia
+                            </h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Exploring the decentralized
+                                future and its potential impact on local industries.</p>
+                            <div class="flex items-center gap-3 border-t dark:border-slate-700 pt-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-200"></div>
+                                <div class="text-[10px] font-bold uppercase tracking-tight">
+                                    <p class="dark:text-white">Keo Sophorn</p>
+                                    <p class="text-slate-400">Blockchain Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 5 -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300 reveal"
+                            style="transition-delay: 0.2s">
+                            <span class="text-orange-600 font-bold text-xs uppercase mb-3 block">Networking</span>
+                            <h4 class="text-lg font-bold dark:text-white mb-4">Building Your Professional Network in
+                                Phnom Penh</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">The best events and communities
+                                to join for career growth this year.</p>
+                            <div class="flex items-center gap-3 border-t dark:border-slate-700 pt-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-200"></div>
+                                <div class="text-[10px] font-bold uppercase tracking-tight">
+                                    <p class="dark:text-white">Nary Chann</p>
+                                    <p class="text-slate-400">Community Lead</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 6 -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300 reveal"
+                            style="transition-delay: 0.3s">
+                            <span class="text-rose-600 font-bold text-xs uppercase mb-3 block">Leadership</span>
+                            <h4 class="text-lg font-bold dark:text-white mb-4">Transitioning from Developer to Tech Lead
+                            </h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Practical advice for individual
+                                contributors moving into management roles.</p>
+                            <div class="flex items-center gap-3 border-t dark:border-slate-700 pt-4">
+                                <div class="w-8 h-8 rounded-full bg-slate-200"></div>
+                                <div class="text-[10px] font-bold uppercase tracking-tight">
+                                    <p class="dark:text-white">Sovan Roth</p>
+                                    <p class="text-slate-400">Engineering Manager</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Gallery -->
+            <section id="videos" class="py-20 px-6 reveal">
+                <div class="mx-auto max-w-7xl">
+                    <h2 class="text-3xl font-extrabold dark:text-white mb-12" data-i18n="media-videos-title">Video
+                        Gallery</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Video Card -->
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-video bg-slate-900 rounded-3xl relative mb-4 overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <span
+                                            class="material-symbols-outlined text-white text-3xl fill-1">play_arrow</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="absolute bottom-4 left-4 right-4 text-xs font-bold text-white flex justify-between">
+                                    <span>2:15</span>
+                                    <span>3.4k views</span>
+                                </div>
+                            </div>
+                            <h4
+                                class="font-bold dark:text-white leading-snug group-hover:text-primary transition-colors">
+                                Success Story: How Meng Found His Dream Role in Gaming</h4>
+                        </div>
+                        <!-- Video Card -->
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-video bg-slate-900 rounded-3xl relative mb-4 overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <span
+                                            class="material-symbols-outlined text-white text-3xl fill-1">play_arrow</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="absolute bottom-4 left-4 right-4 text-xs font-bold text-white flex justify-between">
+                                    <span>5:30</span>
+                                    <span>1.2k views</span>
+                                </div>
+                            </div>
+                            <h4
+                                class="font-bold dark:text-white leading-snug group-hover:text-primary transition-colors">
+                                Platform Walkthrough: Finding Local Jobs Fast</h4>
+                        </div>
+                        <!-- Video Card -->
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-video bg-slate-900 rounded-3xl relative mb-4 overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <span
+                                            class="material-symbols-outlined text-white text-3xl fill-1">play_arrow</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="absolute bottom-4 left-4 right-4 text-xs font-bold text-white flex justify-between">
+                                    <span>3:45</span>
+                                    <span>980 views</span>
+                                </div>
+                            </div>
+                            <h4
+                                class="font-bold dark:text-white leading-snug group-hover:text-primary transition-colors">
+                                Company Culture at NextRole: Why Join Us?</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Block -->
+            <section class="py-24 px-6 reveal">
+                <div class="mx-auto max-w-7xl">
+                    <div
+                        class="bg-primary-light/5 dark:bg-slate-900 rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden border border-primary-light/10 dark:border-slate-800">
+                        <div
+                            class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                        </div>
+                        <div class="mx-auto max-w-2xl relative z-10">
+                            <h2 class="text-3xl md:text-4xl font-extrabold mb-6 dark:text-white"
+                                data-i18n="media-newsletter-title">Stay Ahead in Your Career</h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-lg mb-10"
+                                data-i18n="media-newsletter-desc">Join 10,000+ professionals receiving weekly career
+                                tips and industry news.</p>
+                            <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
+                                <input type="email"
+                                    class="flex-grow rounded-2xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 dark:text-white p-4 focus:ring-primary transition-all text-sm font-medium"
+                                    data-i18n="media-newsletter-placeholder" placeholder="Enter your email">
+                                <button
+                                    class="bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all whitespace-nowrap"
+                                    data-i18n="media-newsletter-btn">Subscribe Now</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-slate-900 text-slate-300 py-16 px-6">
+            <div class="mx-auto max-w-7xl grid md:grid-cols-4 gap-12 border-b border-slate-800 pb-12 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+                            <span class="material-symbols-outlined font-bold">hub</span>
+                        </div>
+                        <h2 class="text-2xl font-extrabold tracking-tight text-white">NextRole</h2>
+                    </div>
+                    <p class="max-w-sm mb-6 leading-relaxed" data-i18n="footer-desc">Connecting world-class talent with
+                        future leaders.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6" data-i18n="footer-explore">Explore</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a class="hover:text-primary transition-colors" href="jobs.html">Browse Jobs</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">How It Works</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6" data-i18n="footer-legal">Legal</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-500">
+                <p>© 2026 NextRole. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
