@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>NextRole — Your Next Career Move Starts Here</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <style>
+      body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body class="font-sans text-text bg-white text-[15px] leading-[1.6]">
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-[100] bg-white border-b border-border px-10 flex items-center gap-8 h-16">
+      <div class="flex items-center gap-2 text-[18px] font-extrabold text-navy flex-shrink-0">
+        <img src="asset/logo.svg" alt="NextRole" width="28" height="28" class="w-7 h-7"/>
+        NextRole
+      </div>
+      <div class="flex items-center gap-1 flex-1 justify-center">
+        <a href="#" class="px-3 py-1.5 rounded-md text-sm font-medium text-violet bg-violet-light transition-colors">Home</a>
+        <a href="#" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-violet hover:bg-violet-light transition-colors">Jobs</a>
+        <a href="#" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-violet hover:bg-violet-light transition-colors">Media</a>
+        <a href="#" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-violet hover:bg-violet-light transition-colors">CV Builder</a>
+        <a href="#" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-violet hover:bg-violet-light transition-colors">About Us</a>
+        <a href="#" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-violet hover:bg-violet-light transition-colors">Contact Us</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="px-5 py-2 rounded-lg bg-violet text-white text-sm font-semibold hover:bg-violet-dark transition-colors">Login</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="min-h-[calc(100vh-64px)] max-w-[1280px] mx-auto px-20 pt-14 pb-10 grid grid-cols-[1fr_420px] gap-12 items-center">
+      <div>
+        <div class="text-[11px] font-bold tracking-[1.5px] text-orange uppercase mb-4">YOUR NEXT AMAZING CAREER MOVE</div>
+        <h1 class="text-[48px] font-extrabold leading-[1.15] text-navy mb-4">
+          Your Next<br>Career Move<br><span class="text-violet">Starts Here</span>
+        </h1>
+        <p class="text-[15px] text-muted max-w-[420px] mb-8">
+          Explore thousands of job opportunities across all industries with NextRole.
+        </p>
+        <div class="flex gap-2 items-center bg-white border-[1.5px] border-border rounded-[10px] py-1.5 pl-3.5 pr-1.5 max-w-[480px] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" placeholder="Job title or keyword" class="flex-1 border-none outline-none font-[inherit] text-sm text-text bg-transparent"/>
+          <div class="w-px h-5 bg-border mx-1.5"></div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <select class="border-none outline-none font-[inherit] text-sm text-muted bg-transparent cursor-pointer pr-1">
+            <option>All Locations</option>
+            <option>Phnom Penh</option>
+            <option>Siem Reap</option>
+          </select>
+          <button class="px-5 py-[9px] rounded-[7px] bg-violet text-white text-sm font-semibold hover:bg-violet-dark transition-colors whitespace-nowrap">Search</button>
+        </div>
+      </div>
+
+      <!-- Hero visual -->
+      <div class="relative rounded-[20px] overflow-hidden h-80 bg-gradient-to-br from-[#1a4a3a] via-[#2d7a5a] to-[#1a5a4a] flex items-end p-6">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <span class="text-[96px] font-black text-white/10 tracking-[-4px] select-none">careers</span>
+        </div>
+        <div class="bg-white rounded-[10px] py-2.5 px-4 flex items-center gap-2.5 text-[13px] font-bold text-navy shadow-[0_4px_16px_rgba(0,0,0,0.2)] z-[1]">
+          <span class="text-[22px]">🇦🇺</span> ABA
+        </div>
+        <div class="absolute bottom-3.5 left-1/2 -translate-x-1/2 flex gap-1.5">
+          <span class="w-5 h-2 rounded bg-white block"></span>
+          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
+          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
+          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LATEST JOB OPENINGS -->
+    <div class="py-16 px-20 max-w-[1280px] mx-auto">
+      <div class="text-[26px] font-extrabold text-navy mb-1.5">Latest Job Openings</div>
+      <div class="h-8"></div>
+      <div class="grid grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="border-[1.5px] border-border rounded-[14px] overflow-hidden bg-white transition-all duration-200 hover:shadow-[0_8px_32px_rgba(59,91,219,0.12)] hover:-translate-y-0.5">
+          <div class="w-full h-40 relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8a]">
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1a3a6a] to-[#2a5a9a]">
+              <svg class="opacity-70" width="100" height="68" viewBox="0 0 100 68" fill="none">
+                <rect x="10" y="8" width="80" height="50" rx="4" fill="#1E4A8A" stroke="#2A6ABA" stroke-width="1.5"/>
+                <rect x="16" y="14" width="68" height="38" rx="2" fill="#0D2A5A"/>
+                <rect x="0" y="58" width="100" height="6" rx="3" fill="#2A4A8A"/>
+                <rect x="35" y="58" width="30" height="3" rx="1.5" fill="#1A3A6A"/>
+              </svg>
+            </div>
+            <button class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-orange flex items-center justify-center text-white">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+            </button>
+          </div>
+          <div class="p-4">
+            <div class="text-[15px] font-bold text-navy mb-1.5">Senior Frontend Engineer</div>
+            <div class="text-sm font-semibold text-violet mb-2.5">$350 – $500</div>
+            <div class="flex gap-1.5 flex-wrap mb-3">
+              <span class="px-2.5 py-[3px] rounded-full text-xs font-semibold bg-[#DCFCE7] text-[#166534]">Full-time</span>
+            </div>
+            <div class="flex flex-col gap-1 mb-3.5">
+              <div class="flex items-center gap-1.5 text-[13px] text-muted">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+                3 days ago
+              </div>
+              <div class="flex items-center gap-1.5 text-[13px] text-muted">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                Phnom Penh
+              </div>
+            </div>
+            <button class="w-full py-2.5 rounded-lg bg-violet text-white text-sm font-bold hover:bg-violet-dark transition-colors">Apply Now</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="border-[1.5px] border-border rounded-[14px] overflow-hidden bg-white transition-all duration-200 hover:shadow-[0_8px_32px_rgba(59,91,219,0.12)] hover:-translate-y-0.5">
+          <div class="w-full h-40 relative overflow-hidden flex items-center justify-center">
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1a3a6a] to-[#3a6aaa]">
+              <svg class="opacity-70" width="100" height="68" viewBox="0 0 100 68" fill="none">
+                <rect x="10" y="8" width="80" height="50" rx="4" fill="#2A5A9A" stroke="#3A7ACA" stroke-width="1.5"/>
+                <rect x="16" y="14" width="68" height="38" rx="2" fill="#1A3A7A"/>
+                <rect x="0" y="58" width="100" height="6" rx="3" fill="#3A5AAA"/>
+                <rect x="35" y="58" width="30" height="3" rx="1.5" fill="#2A4A8A"/>
+              </svg>
+            </div>
+            <button class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-orange flex items-center justify-center text-white">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+            </button>
+          </div>
+          <div class="p-4">
+            <div class="text-[15px] font-bold text-navy mb-1.5">Senior Frontend Engineer</div>
+            <div class="text-sm font-semibold text-violet mb-2.5">$250 – $500</div>
+            <div class="flex gap-1.5 flex-wrap mb-3">
+              <span class="px-2.5 py-[3px] rounded-full text-xs font-semibold bg-[#DCFCE7] text-[#166534]">Full-time</span>
+            </div>
+            <div class="flex flex-col gap-1 mb-3.5">
+              <div class="flex items-center gap-1.5 text-[13px] text-muted">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+                2 days ago
+              </div>
+              <div class="flex items-center gap-1.5 text-[13px] text-muted">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                Siem Reap
+              </div>
+            </div>
+            <button class="w-full py-2.5 rounded-lg bg-violet text-white text-sm font-bold hover:bg-violet-dark transition-colors">Apply Now</button>
+          </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="border-[1.5px] border-border rounded-[14px] overflow-hidden bg-white transition-all duration-200 hover:shadow-[0_8px_32px_rgba(59,91,219,0.12)] hover:-translate-y-0.5">
+          <div class="w-full h-40 relative overflow-hidden flex items-center justify-center">
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#2a1a6a] to-[#5a3aaa]">
+              <svg class="opacity-70" width="100" height="68" viewBox="0 0 100 68" fill="none">
+                <rect x="10" y="8" width="80" height="50" rx="4" fill="#3A2A8A" stroke="#5A4ACA" stroke-width="1.5"/>
+                <rect x="16" y="14" width="68" height="38" rx="2" fill="#2A1A6A"/>
+                <rect x="0" y="58" width="100" height="6" rx="3" fill="#4A3A9A"/>
+                <rect x="35" y="58" width="30" height="3" rx="1.5" fill="#3A2A8A"/>
+              </svg>
+            </div>
+            <button class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-orange flex items-center justify-center text-white">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+            </button>
+          </div>
+          <div class="p-4">
+            <div class="text-[15px] font-bold text-navy mb-1.5">Senior Frontend Engineer</div>
+            <div class="text-sm font-semibold text-violet mb-2.5">$250 – $500</div>
+            <div class="flex gap-1.5 flex-wrap mb-3">
+              <span class="px-2.5 py-[3px] rounded-full text-xs font-semibold bg-[#DCFCE7] text-[#166534]">Full-time</span>
+            </div>
+            <div class="flex flex-col gap-1 mb-3.5">
+              <div class="flex items-center gap-1.5 text-[13px] text-muted">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+                3 days ago
+              </div>
+              <div class="flex items-center gap-1.5 text-[13px] text-muted">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                Phnom Penh
+              </div>
+            </div>
+            <button class="w-full py-2.5 rounded-lg bg-violet text-white text-sm font-bold hover:bg-violet-dark transition-colors">Apply Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POPULAR JOB CATEGORIES -->
+    <div class="bg-bg py-16">
+      <div class="px-20 max-w-[1280px] mx-auto">
+        <div class="text-[26px] font-extrabold text-navy mb-1.5 text-center">Popular Job Categories</div>
+        <div class="text-sm text-muted mb-9 text-center">Discover your next opportunity across high-growth industries.</div>
+        <div class="grid grid-cols-4 gap-4">
+          <div class="bg-white border-[1.5px] border-border rounded-xl p-5 flex flex-col gap-2 cursor-pointer transition-all duration-200 hover:border-violet hover:shadow-[0_4px_16px_rgba(59,91,219,0.1)]">
+            <div class="w-11 h-11 rounded-[10px] bg-violet-light flex items-center justify-center text-violet">
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            </div>
+            <div class="text-sm font-bold text-navy">Marketing</div>
+            <div class="text-xs text-muted">124+ open positions</div>
+          </div>
+          <div class="bg-white border-[1.5px] border-border rounded-xl p-5 flex flex-col gap-2 cursor-pointer transition-all duration-200 hover:border-violet hover:shadow-[0_4px_16px_rgba(59,91,219,0.1)]">
+            <div class="w-11 h-11 rounded-[10px] bg-violet-light flex items-center justify-center text-violet">
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="text-sm font-bold text-navy">Engineering</div>
+            <div class="text-xs text-muted">362+ open positions</div>
+          </div>
+          <div class="bg-white border-[1.5px] border-border rounded-xl p-5 flex flex-col gap-2 cursor-pointer transition-all duration-200 hover:border-violet hover:shadow-[0_4px_16px_rgba(59,91,219,0.1)]">
+            <div class="w-11 h-11 rounded-[10px] bg-violet-light flex items-center justify-center text-violet">
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+            </div>
+            <div class="text-sm font-bold text-navy">Design</div>
+            <div class="text-xs text-muted">184+ open positions</div>
+          </div>
+          <div class="bg-white border-[1.5px] border-border rounded-xl p-5 flex flex-col gap-2 cursor-pointer transition-all duration-200 hover:border-violet hover:shadow-[0_4px_16px_rgba(59,91,219,0.1)]">
+            <div class="w-11 h-11 rounded-[10px] bg-violet-light flex items-center justify-center text-violet">
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+            </div>
+            <div class="text-sm font-bold text-navy">Finance</div>
+            <div class="text-xs text-muted">102+ open positions</div>
+          </div>
+          <div class="bg-white border-[1.5px] border-border rounded-xl p-5 flex flex-col gap-2 cursor-pointer transition-all duration-200 hover:border-violet hover:shadow-[0_4px_16px_rgba(59,91,219,0.1)]">
+            <div class="w-11 h-11 rounded-[10px] bg-violet-light flex items-center justify-center text-violet">
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div class="text-sm font-bold text-navy">Healthcare</div>
+            <div class="text-xs text-muted">130+ open positions</div>
+          </div>
+          <div class="bg-white border-[1.5px] border-border rounded-xl p-5 flex flex-col gap-2 cursor-pointer transition-all duration-200 hover:border-violet hover:shadow-[0_4px_16px_rgba(59,91,219,0.1)]">
+            <div class="w-11 h-11 rounded-[10px] bg-violet-light flex items-center justify-center text-violet">
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <div class="text-sm font-bold text-navy">Data Science</div>
+            <div class="text-xs text-muted">502+ open positions</div>
+          </div>
+          <div class="bg-white border-[1.5px] border-border rounded-xl p-5 flex flex-col gap-2 cursor-pointer transition-all duration-200 hover:border-violet hover:shadow-[0_4px_16px_rgba(59,91,219,0.1)]">
+            <div class="w-11 h-11 rounded-[10px] bg-violet-light flex items-center justify-center text-violet">
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+            </div>
+            <div class="text-sm font-bold text-navy">Business</div>
+            <div class="text-xs text-muted">335+ open positions</div>
+          </div>
+          <div class="bg-white border-[1.5px] border-border rounded-xl p-5 flex flex-col gap-2 cursor-pointer transition-all duration-200 hover:border-violet hover:shadow-[0_4px_16px_rgba(59,91,219,0.1)]">
+            <div class="w-11 h-11 rounded-[10px] bg-violet-light flex items-center justify-center text-violet">
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="text-sm font-bold text-navy">Education</div>
+            <div class="text-xs text-muted">338+ open positions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="bg-violet-light py-16">
+      <div class="px-20 max-w-[1280px] mx-auto">
+        <div class="text-[26px] font-extrabold text-navy mb-1.5 text-center">How It Works</div>
+        <div class="text-sm text-muted mb-9 text-center">Get hired in three simple steps.</div>
+        <div class="grid grid-cols-3 gap-10 relative mt-10">
+          <div class="absolute top-9 left-[calc(16.6%+20px)] right-[calc(16.6%+20px)] h-0.5 bg-gradient-to-r from-violet to-violet-dark z-0"></div>
+          <div class="flex flex-col items-center text-center relative z-[1]">
+            <div class="w-[72px] h-[72px] rounded-full bg-violet text-white flex items-center justify-center mb-5 shadow-[0_4px_16px_rgba(59,91,219,0.3)]">
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3 class="text-[17px] font-bold text-navy mb-2">Create Profile</h3>
+            <p class="text-[13px] text-muted max-w-[220px]">Set up your professional profile and showcase your skills to employers.</p>
+          </div>
+          <div class="flex flex-col items-center text-center relative z-[1]">
+            <div class="w-[72px] h-[72px] rounded-full bg-violet text-white flex items-center justify-center mb-5 shadow-[0_4px_16px_rgba(59,91,219,0.3)]">
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </div>
+            <h3 class="text-[17px] font-bold text-navy mb-2">Find Job</h3>
+            <p class="text-[13px] text-muted max-w-[220px]">Browse thousands of hand-picked job listings across all industries.</p>
+          </div>
+          <div class="flex flex-col items-center text-center relative z-[1]">
+            <div class="w-[72px] h-[72px] rounded-full bg-violet text-white flex items-center justify-center mb-5 shadow-[0_4px_16px_rgba(59,91,219,0.3)]">
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3 class="text-[17px] font-bold text-navy mb-2">Get Hired</h3>
+            <p class="text-[13px] text-muted max-w-[220px]">Connect with hiring managers and land your next role with confidence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUCCESS STORIES -->
+    <div class="py-16 px-20 max-w-[1280px] mx-auto">
+      <div class="text-[26px] font-extrabold text-navy mb-1.5 text-center">Success Stories</div>
+      <div class="text-sm text-muted mb-9 text-center">Real results from real users who found their dream careers.</div>
+      <div class="grid grid-cols-3 gap-6">
+        <div class="bg-white border-[1.5px] border-border rounded-[14px] p-6 transition-shadow duration-200 hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]">
+          <div class="text-[13px] text-muted leading-[1.7] mb-5 italic">"NextRole completely changed my job search. I went from struggling with no direction to confidently landing my first dream role within just 4 weeks."</div>
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full overflow-hidden flex items-center justify-center text-[18px] font-bold text-white flex-shrink-0 bg-gradient-to-br from-[#667eea] to-[#764ba2]">C</div>
+            <div>
+              <div class="text-sm font-bold text-navy">Chan Phearv</div>
+              <div class="text-xs text-muted">Software Engineer</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border-[1.5px] border-border rounded-[14px] p-6 transition-shadow duration-200 hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]">
+          <div class="text-[13px] text-muted leading-[1.7] mb-5 italic">"Using NextRole's resources and CV Builder, I got my first internship in Product Management at a company I had always dreamed of working at."</div>
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full overflow-hidden flex items-center justify-center text-[18px] font-bold text-white flex-shrink-0 bg-gradient-to-br from-[#f093fb] to-[#f5576c]">P</div>
+            <div>
+              <div class="text-sm font-bold text-navy">Put Rieath</div>
+              <div class="text-xs text-muted">Graduate Intern</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border-[1.5px] border-border rounded-[14px] p-6 transition-shadow duration-200 hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)]">
+          <div class="text-[13px] text-muted leading-[1.7] mb-5 italic">"Finding the right company for my first job was intimidating — NextRole made it incredibly easy to navigate and apply with confidence."</div>
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full overflow-hidden flex items-center justify-center text-[18px] font-bold text-white flex-shrink-0 bg-gradient-to-br from-[#4facfe] to-[#00f2fe]">K</div>
+            <div>
+              <div class="text-sm font-bold text-navy">Khim Davora</div>
+              <div class="text-xs text-muted">Manager</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED ON -->
+    <div class="bg-bg py-16">
+      <div class="px-20 max-w-[1280px] mx-auto">
+        <div class="text-[26px] font-extrabold text-navy mb-1.5 text-center">Featured On</div>
+        <p class="text-sm text-muted text-center max-w-[600px] mx-auto mb-9">NextRole is trusted by industry leaders. Our mission is to connect students, recent graduates, and job seekers to the companies that need them most. We are committed to our users and customers.</p>
+        <div class="flex items-center justify-center gap-10 flex-wrap">
+          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold text-muted shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-gradient-to-br from-[#1a3a8a] to-[#2a5aaa]">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="16" fill="#2a5aaa"/><text x="20" y="25" font-size="11" font-weight="800" fill="white" text-anchor="middle" font-family="sans-serif">ABC</text></svg>
+          </div>
+          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-[#1a3a6a]">
+            <span class="text-sm font-extrabold text-white">ABA</span>
+          </div>
+          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-white">
+            <span class="text-[13px] font-extrabold text-[#22C55E]">Smart</span>
+          </div>
+          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold text-muted shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-gradient-to-br from-[#1a5a2a] to-[#2a8a4a]">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4 L32 28 L4 28 Z" fill="rgba(255,255,255,0.8)"/></svg>
+          </div>
+          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold text-muted shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-gradient-to-br from-[#5a1a8a] to-[#8a3aaa]">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="10" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3"/><circle cx="18" cy="18" r="4" fill="rgba(255,255,255,0.8)"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy text-white/80 px-20 pt-12 pb-6">
+      <div class="grid grid-cols-[2fr_1fr_1fr] gap-12 mb-10">
+        <div>
+          <div class="flex items-center gap-2 text-[18px] font-extrabold text-white mb-3.5">
+            <img src="asset/logo.svg" alt="NextRole" width="28" height="28" class="w-7 h-7"/>
+            NextRole
+          </div>
+          <div class="text-[13px] text-white/55 leading-[1.7] max-w-[280px]">Connecting students and job seekers to the right opportunities. Your next career move starts here.</div>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4">Explore</h4>
+          <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">About Us</a>
+          <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Jobs</a>
+          <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Media</a>
+          <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Resources</a>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4">Login</h4>
+          <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Posting Table</a>
+          <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Job Seeker</a>
+          <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Employer</a>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-5 text-center text-xs text-white/35">© 2026 NextRole. All rights reserved.</div>
+    </footer>
+
+    </body>
+</html>
