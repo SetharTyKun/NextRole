@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign Up | NextRole — Join Your Next Career Move</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+      body { font-family: 'Plus Jakarta Sans', sans-serif; }
+      .glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .mesh-bg {
+        background-color: #3B5BDB;
+        background-image: 
+          radial-gradient(at 0% 0%, hsla(225, 68%, 54%, 1) 0, transparent 50%), 
+          radial-gradient(at 50% 0%, hsla(220, 60%, 40%, 1) 0, transparent 50%), 
+          radial-gradient(at 100% 0%, hsla(15, 94%, 53%, 1) 0, transparent 50%), 
+          radial-gradient(at 0% 100%, hsla(15, 94%, 53%, 1) 0, transparent 50%), 
+          radial-gradient(at 50% 100%, hsla(225, 68%, 54%, 1) 0, transparent 50%), 
+          radial-gradient(at 100% 100%, hsla(220, 60%, 40%, 1) 0, transparent 50%);
+      }
+      @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(2deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+    </style>
+  </head>
+
+  <body class="mesh-bg min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+    
+    <!-- Decorative floating elements -->
+    <div class="absolute top-[5%] right-[10%] w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-[5%] left-[10%] w-80 h-80 bg-accent/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+
+    <div class="w-full max-w-[540px] z-10 py-10">
+      <!-- Logo section -->
+      <div class="flex flex-col items-center mb-8 animate-fadeIn">
+        <div class="flex items-center gap-3 text-[24px] font-extrabold text-white mb-2 cursor-pointer" onclick="window.location.href='index.html'">
+          <div class="bg-white p-2 rounded-xl shadow-lg">
+            <img src="asset/logo.svg" alt="NextRole" width="32" height="32" class="w-8 h-8"/>
+          </div>
+          NextRole
+        </div>
+        <p class="text-white/70 text-sm font-medium text-center">Join thousands of others finding their dream roles today.</p>
+      </div>
+
+      <!-- Register Card -->
+      <div class="glass rounded-[32px] p-10 shadow-2xl animate-slideUp">
+        <h1 class="text-[28px] font-bold text-secondary mb-8">Create Account</h1>
+        
+        <form class="space-y-6">
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Full Name -->
+            <div class="space-y-2">
+              <label for="name" class="text-sm font-bold text-secondary/70 ml-1">Full Name</label>
+              <input type="text" id="name" placeholder="John Doe" required
+                class="w-full px-4 py-4 bg-white border border-border rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-text font-medium placeholder:text-muted/60 shadow-sm" />
+            </div>
+            <!-- Email -->
+            <div class="space-y-2">
+              <label for="email" class="text-sm font-bold text-secondary/70 ml-1">Email</label>
+              <input type="email" id="email" placeholder="you@example.com" required
+                class="w-full px-4 py-4 bg-white border border-border rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-text font-medium placeholder:text-muted/60 shadow-sm" />
+            </div>
+          </div>
+
+          <!-- Account Type Selection -->
+          <div class="space-y-3">
+            <label class="text-sm font-bold text-secondary/70 ml-1">I want to join as a:</label>
+            <div class="grid grid-cols-2 gap-4">
+              <label class="relative flex flex-col p-4 bg-white border-2 border-border rounded-2xl cursor-pointer hover:border-primary/50 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                <input type="radio" name="role" value="candidate" class="hidden peer" checked />
+                <span class="text-sm font-bold text-secondary mb-1">Candidate</span>
+                <span class="text-[11px] text-muted leading-tight">Looking for my next career move</span>
+                <div class="absolute top-3 right-3 w-4 h-4 rounded-full border-2 border-border peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+                  <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+                </div>
+              </label>
+              <label class="relative flex flex-col p-4 bg-white border-2 border-border rounded-2xl cursor-pointer hover:border-primary/50 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                <input type="radio" name="role" value="employer" class="hidden peer" />
+                <span class="text-sm font-bold text-secondary mb-1">Employer</span>
+                <span class="text-[11px] text-muted leading-tight">Looking to hire amazing talent</span>
+                <div class="absolute top-3 right-3 w-4 h-4 rounded-full border-2 border-border peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+                  <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Password -->
+            <div class="space-y-2">
+              <label for="password" class="text-sm font-bold text-secondary/70 ml-1">Password</label>
+              <input type="password" id="password" placeholder="••••••••" required
+                class="w-full px-4 py-4 bg-white border border-border rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-text font-medium placeholder:text-muted/60 shadow-sm" />
+            </div>
+            <!-- Confirm Password -->
+            <div class="space-y-2">
+              <label for="confirm-password" class="text-sm font-bold text-secondary/70 ml-1">Confirm</label>
+              <input type="password" id="confirm-password" placeholder="••••••••" required
+                class="w-full px-4 py-4 bg-white border border-border rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-text font-medium placeholder:text-muted/60 shadow-sm" />
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <div class="flex items-start gap-3 px-1">
+            <input type="checkbox" id="terms" required class="mt-1 w-4 h-4 rounded border-border text-primary focus:ring-primary/20 cursor-pointer" />
+            <label for="terms" class="text-[13px] font-semibold text-muted cursor-pointer select-none leading-relaxed">
+              I agree to the <a href="#" class="text-primary hover:underline">Terms of Service</a> and <a href="#" class="text-primary hover:underline">Privacy Policy</a>.
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" 
+            class="w-full py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/25 hover:bg-secondary hover:shadow-secondary/25 transform hover:-translate-y-0.5 active:scale-[0.98] transition-all">
+            Create My Account
+          </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="relative my-8">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-border"></div>
+          </div>
+          <div class="relative flex justify-center text-xs">
+            <span class="px-4 bg-white/0 text-muted font-bold uppercase tracking-wider">Or sign up with</span>
+          </div>
+        </div>
+
+        <!-- Social Logins -->
+        <div class="grid grid-cols-2 gap-4">
+          <button class="flex items-center justify-center gap-3 py-3 border border-border rounded-2xl bg-white hover:bg-bg transition-colors font-bold text-sm text-secondary shadow-sm">
+            <img src="https://www.google.com/favicon.ico" class="w-5 h-5" alt="Google">
+            Google
+          </button>
+          <button class="flex items-center justify-center gap-3 py-3 border border-border rounded-2xl bg-white hover:bg-bg transition-colors font-bold text-sm text-secondary shadow-sm">
+            <img src="https://www.linkedin.com/favicon.ico" class="w-5 h-5" alt="LinkedIn">
+            LinkedIn
+          </button>
+        </div>
+
+        <!-- Footer -->
+        <p class="mt-8 text-center text-sm font-medium text-muted">
+          Already have an account? 
+          <a href="login.html" class="text-primary font-bold hover:text-secondary transition-colors">Sign In</a>
+        </p>
+      </div>
+
+      <!-- Back Link -->
+      <div class="mt-8 text-center">
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-white/80 hover:text-white transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Homepage
+        </a>
+      </div>
+    </div>
+
+  </body>
+</html>
