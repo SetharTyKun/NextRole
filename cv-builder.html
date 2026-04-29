@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder | NextRole - Your Career Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .preview-container {
+            aspect-ratio: 1 / 1.414;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-item.active {
+            background-color: #f8fafc;
+            color: #2563eb;
+            border-left: 4px solid #2563eb;
+        }
+
+        .dark .step-item.active {
+            background-color: #1e293b;
+            color: #60a5fa;
+            border-left-color: #60a5fa;
+        }
+
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass-morphism {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#64748b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="flex min-h-screen flex-col">
+        <!-- Header -->
+        <header
+            class="sticky top-0 z-50 w-full border-b border-slate-100 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm px-6 md:px-12 py-4">
+            <div class="mx-auto flex max-w-7xl items-center justify-between">
+                <div class="flex items-center gap-2 group cursor-pointer" onclick="window.location.href='index.html'">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white group-hover:rotate-12 transition-transform">
+                        <span class="material-symbols-outlined font-bold">hub</span>
+                    </div>
+                    <h2 class="text-2xl font-extrabold tracking-tight dark:text-white">NextRole</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-500 dark:text-slate-400">
+                    <!-- Navigation items will be injected by main.js -->
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button onclick="window.toggleTheme()"
+                        class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-symbols-outlined dark:text-white">contrast</span>
+                    </button>
+                    <!-- Language Switcher -->
+                    <button onclick="window.setLanguage(window.getCurrentLang() === 'en' ? 'km' : 'en')"
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-700">
+                        <span class="material-symbols-outlined text-sm text-primary">language</span>
+                        <span class="text-xs font-bold uppercase dark:text-white" id="lang-indicator">EN/ខ្មែរ</span>
+                    </button>
+                    <button onclick="window.location.href='login.html'"
+                        class="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-lg hover:shadow-lg active:scale-95 transition-all"
+                        data-i18n="login-btn">Login</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 px-6 md:px-12 py-8 bg-slate-50/50 dark:bg-slate-950/50">
+            <div class="mx-auto max-w-7xl">
+                <!-- Breadcrumbs -->
+                <nav class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+                    <a href="index.html" class="hover:text-primary">Dashboard</a>
+                    <span class="material-symbols-outlined text-xs">chevron_right</span>
+                    <span class="text-slate-600 dark:text-slate-300" data-i18n="nav-cv-builder">CV Builder</span>
+                </nav>
+
+                <div class="mb-8">
+                    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2"
+                        data-i18n="cv-builder-title">CV Builder & Profile</h1>
+                    <p class="text-slate-500 dark:text-slate-400" data-i18n="cv-builder-subtitle">Real-time resume
+                        editor with AI-powered skill matching.</p>
+                </div>
+
+                <div class="flex flex-col lg:grid lg:grid-cols-12 gap-8">
+                    <!-- Left Sidebar: Steps & Matching (Moves to top on mobile) -->
+                    <div class="lg:col-span-3 space-y-6">
+                        <!-- Mobile Step Indicator (Visible only on mobile) -->
+                        <div
+                            class="lg:hidden bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">stepper</span>
+                                <span id="mobile-current-step"
+                                    class="text-sm font-bold text-slate-900 dark:text-white">Personal Info</span>
+                            </div>
+                            <span class="text-xs font-bold text-slate-400">Step <span
+                                    id="mobile-step-num">1</span>/4</span>
+                        </div>
+
+                        <!-- Steps Sidebar (Hidden on mobile by default, expandable) -->
+                        <div id="sidebar-steps" class="hidden lg:block space-y-6">
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm">
+                                <div class="p-4 border-b border-slate-50 dark:border-slate-800">
+                                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Steps</h3>
+                                </div>
+                                <div class="flex flex-col" id="cv-steps">
+                                    <button onclick="window.switchStep('personal')" data-step="personal"
+                                        class="step-item active flex items-center justify-between px-6 py-4 text-sm font-bold transition-all group">
+                                        <div class="flex items-center gap-3">
+                                            <span class="material-symbols-outlined text-lg">person</span>
+                                            <span data-i18n="cv-step-personal">Personal Info</span>
+                                        </div>
+                                        <span
+                                            class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+                                    </button>
+                                    <button onclick="window.switchStep('experience')" data-step="experience"
+                                        class="step-item flex items-center justify-between px-6 py-4 text-sm font-bold text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all group">
+                                        <div class="flex items-center gap-3">
+                                            <span class="material-symbols-outlined text-lg">work</span>
+                                            <span data-i18n="cv-step-experience">Experience</span>
+                                        </div>
+                                    </button>
+                                    <button onclick="window.switchStep('education')" data-step="education"
+                                        class="step-item flex items-center justify-between px-6 py-4 text-sm font-bold text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all group">
+                                        <div class="flex items-center gap-3">
+                                            <span class="material-symbols-outlined text-lg">school</span>
+                                            <span data-i18n="cv-step-education">Education</span>
+                                        </div>
+                                    </button>
+                                    <button onclick="window.switchStep('skills')" data-step="skills"
+                                        class="step-item flex items-center justify-between px-6 py-4 text-sm font-bold text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all group">
+                                        <div class="flex items-center gap-3">
+                                            <span class="material-symbols-outlined text-lg">psychology</span>
+                                            <span data-i18n="cv-step-skills">Skills</span>
+                                        </div>
+                                    </button>
+                                    <button
+                                        class="flex items-center gap-3 px-6 py-4 text-sm font-bold text-primary border-t border-slate-50 dark:border-slate-800 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all">
+                                        <span class="material-symbols-outlined text-lg">add_circle</span>
+                                        <span data-i18n="cv-add-section">Add New Section</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skill Match Card -->
+                        <div
+                            class="bg-slate-900 dark:bg-slate-950 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden group">
+                            <div
+                                class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-6xl">leaderboard</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-4" data-i18n="cv-skill-match-title">Skill Match</h3>
+                            <div class="space-y-4 mb-6">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1.5 font-bold">
+                                        <span class="text-slate-400">Product Designer</span>
+                                        <span class="text-cyan-400">94%</span>
+                                    </div>
+                                    <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-cyan-400 rounded-full" style="width: 94%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1.5 font-bold">
+                                        <span class="text-slate-400">UX Researcher</span>
+                                        <span class="text-emerald-400">82%</span>
+                                    </div>
+                                    <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-emerald-400 rounded-full" style="width: 82%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1.5 font-bold">
+                                        <span class="text-slate-400">Frontend Dev</span>
+                                        <span class="text-orange-400">45%</span>
+                                    </div>
+                                    <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-orange-400 rounded-full" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                class="w-full bg-white/10 hover:bg-white/20 border border-white/10 py-3 rounded-xl text-sm font-bold transition-all"
+                                data-i18n="cv-optimize-btn">Optimize My CV</button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 relative min-h-[600px]">
+                        <!-- Personal Info Step -->
+                        <div id="step-personal" class="cv-step-panel animate__animated animate__fadeIn">
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-100 dark:border-slate-800 shadow-sm">
+                                <div class="mb-8">
+                                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-1"
+                                        data-i18n="cv-personal-form-title">Personal Information</h2>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400"
+                                        data-i18n="cv-personal-form-desc">How recruiters can contact you</p>
+                                </div>
+                                <form class="space-y-6">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="space-y-2">
+                                            <label
+                                                class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1"
+                                                data-i18n="cv-first-name">First Name</label>
+                                            <input type="text" id="cv-input-first" value="Alex"
+                                                class="w-full bg-slate-50 dark:bg-slate-950 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white">
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label
+                                                class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1"
+                                                data-i18n="cv-last-name">Last Name</label>
+                                            <input type="text" id="cv-input-last" value="Morgan"
+                                                class="w-full bg-slate-50 dark:bg-slate-950 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white">
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1"
+                                            data-i18n="cv-prof-title">Professional Title</label>
+                                        <input type="text" id="cv-input-title" value="Senior Product Designer"
+                                            class="w-full bg-slate-50 dark:bg-slate-950 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1"
+                                            data-i18n="cv-email-addr">Email Address</label>
+                                        <input type="email" id="cv-input-email" value="alex.morgan@design.com"
+                                            class="w-full bg-slate-50 dark:bg-slate-950 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1"
+                                            data-i18n="cv-summary">Bio / Summary</label>
+                                        <textarea id="cv-input-summary" rows="5"
+                                            class="w-full bg-slate-50 dark:bg-slate-950 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white">Passionate Product Designer with 8+ years of experience in creating user-centered digital experiences for global SaaS companies. Expert in UI/UX systems and design thinking methodologies.</textarea>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between pt-6 border-t border-slate-50 dark:border-slate-800">
+                                        <button type="button"
+                                            class="text-slate-500 font-bold text-sm hover:text-slate-900 dark:hover:text-white transition-colors"
+                                            data-i18n="cv-save-draft">Save Draft</button>
+                                        <button type="button" onclick="window.switchStep('experience')"
+                                            class="bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-blue-800 shadow-lg shadow-blue-500/20 transition-all"
+                                            data-i18n="cv-next-experience">Next: Experience</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Experience Step -->
+                        <div id="step-experience" class="cv-step-panel hidden animate__animated animate__fadeIn">
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-100 dark:border-slate-800 shadow-sm">
+                                <div class="mb-8">
+                                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-1"
+                                        data-i18n="cv-experience-title">Work Experience</h2>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400"
+                                        data-i18n="cv-experience-desc">Tell us about your professional journey</p>
+                                </div>
+                                <div id="experience-list" class="space-y-6">
+                                    <!-- Dynamic Experience Items -->
+                                    <div
+                                        class="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 relative group">
+                                        <div class="grid grid-cols-2 gap-4 mb-4">
+                                            <div class="space-y-2">
+                                                <label
+                                                    class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Job
+                                                    Title</label>
+                                                <input type="text"
+                                                    class="exp-title w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white"
+                                                    value="Lead Designer">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label
+                                                    class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Company</label>
+                                                <input type="text"
+                                                    class="exp-company w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white"
+                                                    value="Meta">
+                                            </div>
+                                        </div>
+                                        <div class="space-y-2 mb-4">
+                                            <label
+                                                class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Duration</label>
+                                            <input type="text"
+                                                class="exp-duration w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white"
+                                                value="2020 - Pres">
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label
+                                                class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Key
+                                                Responsibilities</label>
+                                            <textarea rows="3"
+                                                class="exp-desc w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white">Spearheaded the design of the new advertising dashboard reaching 2M+ businesses.</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="window.addExperience()"
+                                    class="w-full mt-6 py-3 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl text-slate-400 font-bold text-sm hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined">add_circle</span>
+                                    Add Another Position
+                                </button>
+                                <div
+                                    class="flex items-center justify-between pt-8 mt-8 border-t border-slate-50 dark:border-slate-800">
+                                    <button type="button" onclick="window.switchStep('personal')"
+                                        class="text-slate-500 font-bold text-sm hover:text-slate-900 dark:hover:text-white transition-colors">Back</button>
+                                    <button type="button" onclick="window.switchStep('education')"
+                                        class="bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-blue-800 shadow-lg shadow-blue-500/20 transition-all">Next:
+                                        Education</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education Step -->
+                        <div id="step-education" class="cv-step-panel hidden animate__animated animate__fadeIn">
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-100 dark:border-slate-800 shadow-sm">
+                                <div class="mb-8">
+                                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Education</h2>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400">Share your academic background
+                                    </p>
+                                </div>
+                                <div id="education-list" class="space-y-6">
+                                    <div
+                                        class="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 relative group">
+                                        <div class="space-y-4">
+                                            <div class="space-y-2">
+                                                <label
+                                                    class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Degree
+                                                    / Certification</label>
+                                                <input type="text"
+                                                    class="edu-degree w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white"
+                                                    value="B.Sc. in Computer Science">
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label
+                                                    class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">School
+                                                    / University</label>
+                                                <input type="text"
+                                                    class="edu-school w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white"
+                                                    value="Royal University of Phnom Penh">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="window.addEducation()"
+                                    class="w-full mt-6 py-3 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl text-slate-400 font-bold text-sm hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined">add_circle</span>
+                                    Add Another Education
+                                </button>
+                                <div
+                                    class="flex items-center justify-between pt-8 mt-8 border-t border-slate-50 dark:border-slate-800">
+                                    <button type="button" onclick="window.switchStep('experience')"
+                                        class="text-slate-500 font-bold text-sm hover:text-slate-900 dark:hover:text-white transition-colors">Back</button>
+                                    <button type="button" onclick="window.switchStep('skills')"
+                                        class="bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-blue-800 shadow-lg shadow-blue-500/20 transition-all">Next:
+                                        Skills</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills Step -->
+                        <div id="step-skills" class="cv-step-panel hidden animate__animated animate__fadeIn">
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-100 dark:border-slate-800 shadow-sm">
+                                <div class="mb-8">
+                                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Skills</h2>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400">Highlight your core
+                                        competencies</p>
+                                </div>
+                                <div class="space-y-4">
+                                    <label
+                                        class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Technical
+                                        Skills (Comma separated)</label>
+                                    <textarea id="cv-input-skills" rows="4"
+                                        class="w-full bg-slate-50 dark:bg-slate-950 border-slate-100 dark:border-slate-800 rounded-xl p-4 text-sm focus:ring-primary dark:text-white">UI Design, UX Strategy, Figma, React, Tailwind CSS, JavaScript</textarea>
+                                </div>
+                                <div
+                                    class="flex items-center justify-between pt-8 mt-8 border-t border-slate-50 dark:border-slate-800">
+                                    <button type="button" onclick="window.switchStep('education')"
+                                        class="text-slate-500 font-bold text-sm hover:text-slate-900 dark:hover:text-white transition-colors">Back</button>
+                                    <button type="button" onclick="window.updateCV()"
+                                        class="bg-emerald-600 text-white font-bold px-10 py-3 rounded-xl hover:bg-emerald-700 shadow-lg shadow-emerald-500/20 transition-all flex items-center gap-2">
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        Update and Save CV
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: Live Preview (Sticky on Desktop, Toggleable on Mobile) -->
+                    <div class="lg:col-span-4 lg:sticky lg:top-24 h-fit">
+                        <!-- Mobile Preview Toggle -->
+                        <button onclick="window.toggleMobilePreview()"
+                            class="lg:hidden w-full mb-4 py-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-600 dark:text-slate-300 font-bold text-sm flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700">
+                            <span class="material-symbols-outlined">visibility</span>
+                            <span id="preview-toggle-text">Show Live Preview</span>
+                        </button>
+
+                        <div id="preview-container" class="hidden lg:block space-y-6 animate__animated animate__fadeIn">
+                            <div class="flex items-center justify-between px-2">
+                                <h3 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2"
+                                    data-i18n="cv-preview-title">
+                                    Live Preview
+                                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                </h3>
+                                <div class="flex items-center gap-4">
+                                    <span class="text-[10px] font-medium text-slate-400" data-i18n="cv-last-saved">Last
+                                        auto-saved 2 mins ago</span>
+                                    <button
+                                        class="material-symbols-outlined text-slate-400 text-lg hover:text-primary transition-colors"
+                                        data-i18n="cv-fullscreen">fullscreen</button>
+                                </div>
+                            </div>
+
+                            <!-- Template Switcher -->
+                            <div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-xl flex gap-1">
+                                <button onclick="window.switchTemplate('designer')"
+                                    class="flex-1 py-2 text-xs font-bold bg-white dark:bg-slate-700 rounded-lg shadow-sm"
+                                    data-i18n="cv-designer-tab">Designer CV</button>
+                                <button onclick="window.switchTemplate('developer')"
+                                    class="flex-1 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-700/50 rounded-lg"
+                                    data-i18n="cv-developer-tab">Developer CV</button>
+                            </div>
+
+                            <!-- The Actual CV Page -->
+                            <div class="preview-container bg-white rounded-xl overflow-hidden relative group">
+                                <div class="p-8 h-full flex flex-col">
+                                    <div class="flex items-start justify-between mb-8">
+                                        <div>
+                                            <h2 id="pv-name" class="text-2xl font-black text-slate-900">Alex Morgan</h2>
+                                            <p id="pv-title"
+                                                class="text-xs font-bold text-primary uppercase tracking-widest">Senior
+                                                Product Designer</p>
+                                        </div>
+                                        <img id="pv-avatar"
+                                            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&h=100&fit=crop"
+                                            class="w-16 h-16 rounded-full border-4 border-slate-50" alt="Avatar">
+                                    </div>
+
+                                    <div class="grid grid-cols-3 gap-6 flex-1">
+                                        <div class="col-span-1 border-r border-slate-100 pr-4 space-y-6">
+                                            <section>
+                                                <h4
+                                                    class="text-[10px] font-black text-slate-300 uppercase tracking-tighter mb-2">
+                                                    Contact</h4>
+                                                <div class="space-y-1.5 text-[9px] font-medium text-slate-600">
+                                                    <div class="flex items-center gap-1.5">
+                                                        <span class="material-symbols-outlined text-[10px]">mail</span>
+                                                        <span id="pv-email">alex.morgan@design.com</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-1.5">
+                                                        <span class="material-symbols-outlined text-[10px]">call</span>
+                                                        <span>+1 234 567 890</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-1.5">
+                                                        <span
+                                                            class="material-symbols-outlined text-[10px]">location_on</span>
+                                                        <span>Phnom Penh, KH</span>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <section>
+                                                <h4
+                                                    class="text-[10px] font-black text-slate-300 uppercase tracking-tighter mb-2">
+                                                    Skills</h4>
+                                                <div id="pv-skills-container" class="flex flex-wrap gap-1">
+                                                    <!-- Dynamic Skills -->
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div class="col-span-2 space-y-6">
+                                            <section>
+                                                <h4
+                                                    class="text-[10px] font-black text-slate-300 uppercase tracking-tighter mb-2">
+                                                    Profile</h4>
+                                                <p id="pv-summary" class="text-[9px] leading-relaxed text-slate-600">
+                                                    Passionate Product Designer with 8+ years of experience in creating
+                                                    user-centered digital experiences for global SaaS companies. Expert
+                                                    in
+                                                    UI/UX systems and design thinking methodologies.</p>
+                                            </section>
+                                            <section>
+                                                <h4
+                                                    class="text-[10px] font-black text-slate-300 uppercase tracking-tighter mb-2">
+                                                    Experience</h4>
+                                                <div class="space-y-4">
+                                                    <div id="step-experience-pv-first">
+                                                        <div class="flex justify-between items-start mb-0.5">
+                                                            <h5 class="text-[9px] font-black text-slate-900">Lead
+                                                                Designer @
+                                                                Meta</h5>
+                                                            <span class="text-[8px] font-bold text-slate-400">2020 -
+                                                                Pres</span>
+                                                        </div>
+                                                        <p class="text-[8px] text-slate-500">Spearheaded the design of
+                                                            the
+                                                            new advertising dashboard reaching 2M+ businesses.</p>
+                                                    </div>
+                                                    <div id="step-experience-pv-second">
+                                                        <div class="flex justify-between items-start mb-0.5">
+                                                            <h5 class="text-[9px] font-black text-slate-900">Senior
+                                                                UI/UX @
+                                                                Stripe</h5>
+                                                            <span class="text-[8px] font-bold text-slate-400">2017 -
+                                                                2020</span>
+                                                        </div>
+                                                        <p class="text-[8px] text-slate-500">Redesigned the checkout
+                                                            flow
+                                                            resulting in 15% increase in conversion rates.</p>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-auto border-t border-slate-100 pt-4 flex justify-center">
+                                        <div class="h-1 w-12 bg-slate-200 rounded-full"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Preview Overlays -->
+                                <div
+                                    class="absolute inset-0 bg-primary/40 glass-morphism opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                    <div
+                                        class="bg-white dark:bg-slate-900 px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-primary">visibility</span>
+                                        <span
+                                            class="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest"
+                                            data-i18n="cv-fullscreen">Full Screen Preview</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 py-6 px-6 md:px-12">
+            <div class="mx-auto max-w-7xl flex flex-col md:row items-center justify-between gap-4">
+                <div class="flex items-center gap-2 group cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
+                        <span class="material-symbols-outlined text-sm font-bold">hub</span>
+                    </div>
+                    <h2 class="text-lg font-extrabold tracking-tight dark:text-white">NextRole</h2>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">&copy; 2026 NextRole. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <button
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-700"
+                        onclick="window.setLanguage(window.getCurrentLang() === 'en' ? 'km' : 'en')">
+                        <span class="material-symbols-outlined text-sm text-primary">language</span>
+                        <span class="text-xs font-bold uppercase dark:text-white" id="lang-indicator">EN/ខ្មែរ</span>
+                    </button>
+                    <div class="flex gap-4">
+                        <span
+                            class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">facebook</span>
+                        <span
+                            class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer transition-colors">link</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // Step Management
+        window.switchStep = (stepId) => {
+            // Update UI Sidebar
+            document.querySelectorAll('.step-item').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('text-slate-500', 'dark:text-slate-400');
+                if (el.getAttribute('data-step') === stepId) {
+                    el.classList.add('active');
+                    el.classList.remove('text-slate-500', 'dark:text-slate-400');
+
+                    // Update mobile indicators
+                    const stepName = el.querySelector('[data-i18n]').innerText;
+                    const stepMap = { 'personal': 1, 'experience': 2, 'education': 3, 'skills': 4 };
+                    const indicator = document.getElementById('mobile-current-step');
+                    if (indicator) indicator.innerText = stepName;
+                    const num = document.getElementById('mobile-step-num');
+                    if (num) num.innerText = stepMap[stepId];
+                }
+            });
+
+            // Update Form Panels
+            document.querySelectorAll('.cv-step-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            document.getElementById(`step-${stepId}`).classList.remove('hidden');
+
+            // Auto-hide preview on step change on mobile to focus on form
+            if (window.innerWidth < 1024) {
+                const preview = document.getElementById('preview-container');
+                const btn = document.querySelector('[onclick="window.toggleMobilePreview()"]');
+                if (preview && !preview.classList.contains('hidden')) {
+                    preview.classList.add('hidden');
+                    if (btn) btn.innerHTML = '<span class="material-symbols-outlined">visibility</span><span>Show Live Preview</span>';
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        // Mobile Preview Toggle
+        window.toggleMobilePreview = () => {
+            const preview = document.getElementById('preview-container');
+            const btn = event.currentTarget;
+            const isHidden = preview.classList.contains('hidden');
+
+            if (isHidden) {
+                preview.classList.remove('hidden');
+                btn.innerHTML = '<span class="material-symbols-outlined">visibility_off</span><span>Hide Preview</span>';
+                preview.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                preview.classList.add('hidden');
+                btn.innerHTML = '<span class="material-symbols-outlined">visibility</span><span>Show Live Preview</span>';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        // Dynamic Item Addition
+        window.addExperience = () => {
+            const list = document.getElementById('experience-list');
+            const newItem = document.createElement('div');
+            newItem.className = 'p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 relative group animate__animated animate__slideInDown';
+            newItem.innerHTML = `
+                <button onclick="this.parentElement.remove(); syncPreview();" class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="material-symbols-outlined text-xs">close</span>
+                </button>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Job Title</label>
+                        <input type="text" class="exp-title w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white" placeholder="e.g. Senior Designer">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Company</label>
+                        <input type="text" class="exp-company w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white" placeholder="e.g. Google">
+                    </div>
+                </div>
+                <div class="space-y-2 mb-4">
+                    <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Duration</label>
+                    <input type="text" class="exp-duration w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white" placeholder="e.g. 2022 - Present">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Key Responsibilities</label>
+                    <textarea rows="3" class="exp-desc w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white" placeholder="Describe your impact..."></textarea>
+                </div>
+            `;
+            list.appendChild(newItem);
+            syncPreview();
+        };
+
+        window.addEducation = () => {
+            const list = document.getElementById('education-list');
+            const newItem = document.createElement('div');
+            newItem.className = 'p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 relative group animate__animated animate__slideInDown';
+            newItem.innerHTML = `
+                <button onclick="this.parentElement.remove(); syncPreview();" class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="material-symbols-outlined text-xs">close</span>
+                </button>
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Degree / Certification</label>
+                        <input type="text" class="edu-degree w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white" placeholder="e.g. Master in UX">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">School / University</label>
+                        <input type="text" class="edu-school w-full bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 rounded-xl p-3 text-sm focus:ring-primary dark:text-white" placeholder="e.g. Stanford University">
+                    </div>
+                </div>
+            `;
+            list.appendChild(newItem);
+        };
+
+        // Real-time synchronization for CV Builder
+        const syncPreview = () => {
+            // Personal Info
+            const firstName = document.getElementById('cv-input-first').value;
+            const lastName = document.getElementById('cv-input-last').value;
+            const title = document.getElementById('cv-input-title').value;
+            const email = document.getElementById('cv-input-email').value;
+            const summary = document.getElementById('cv-input-summary').value;
+
+            document.getElementById('pv-name').innerText = `${firstName} ${lastName}`;
+            document.getElementById('pv-title').innerText = title;
+            document.getElementById('pv-email').innerText = email;
+            document.getElementById('pv-summary').innerText = summary;
+
+            // Experience (Sync first item as example)
+            const expTitle = document.querySelector('.exp-title').value;
+            const expCompany = document.querySelector('.exp-company').value;
+            const expDuration = document.querySelector('.exp-duration').value;
+            const expDesc = document.querySelector('.exp-desc').value;
+
+            const expPreview = document.querySelector('#step-experience-pv-first');
+            if (expPreview) {
+                expPreview.querySelector('h5').innerText = `${expTitle} @ ${expCompany}`;
+                expPreview.querySelector('span').innerText = expDuration;
+                expPreview.querySelector('p').innerText = expDesc;
+            }
+
+            // Skills
+            const skillsText = document.getElementById('cv-input-skills').value;
+            const skillsArray = skillsText.split(',').map(s => s.trim()).filter(s => s !== '');
+            const skillsContainer = document.querySelector('#pv-skills-container');
+            if (skillsContainer) {
+                skillsContainer.innerHTML = skillsArray.map(skill => `
+                    <span class="px-1.5 py-0.5 bg-slate-50 rounded border border-slate-100 text-[8px] font-bold text-slate-500">${skill}</span>
+                `).join('');
+            }
+        };
+
+        // Template Switcher
+        window.switchTemplate = (template) => {
+            const designerBtn = document.querySelector('[data-i18n="cv-designer-tab"]');
+            const developerBtn = document.querySelector('[data-i18n="cv-developer-tab"]');
+
+            if (template === 'designer') {
+                designerBtn.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm');
+                designerBtn.classList.remove('text-slate-500', 'dark:text-slate-400');
+                developerBtn.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow-sm');
+                developerBtn.classList.add('text-slate-500', 'dark:text-slate-400');
+                document.getElementById('pv-avatar').classList.remove('hidden');
+            } else {
+                developerBtn.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm');
+                developerBtn.classList.remove('text-slate-500', 'dark:text-slate-400');
+                designerBtn.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow-sm');
+                designerBtn.classList.add('text-slate-500', 'dark:text-slate-400');
+                document.getElementById('pv-avatar').classList.add('hidden'); // Developer template might be more text-focused
+            }
+        };
+
+        // Update CV logic
+        window.updateCV = () => {
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+
+            btn.innerHTML = `
+                <span class="material-symbols-outlined animate-spin">refresh</span>
+                Updating...
+            `;
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = `
+                    <span class="material-symbols-outlined">check_circle</span>
+                    CV Updated Successfully!
+                `;
+                btn.classList.replace('bg-emerald-600', 'bg-green-500');
+
+                // Show success toast or redirect
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            }, 1200);
+        };
+
+        // Add listeners to all inputs (including dynamic ones)
+        document.addEventListener('input', (e) => {
+            if (e.target.matches('input, textarea')) {
+                syncPreview();
+            }
+        });
+
+        // Initial sync
+        window.addEventListener('load', syncPreview);
+    </script>
+</body>
+
+</html>
