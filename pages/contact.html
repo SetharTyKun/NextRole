@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact Us | NextRole</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="contact-css.css">
+</head>
+
+<body class="body">
+    <div class="flex-container">
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/asset/logo.svg" alt="NextRole" width="28" height="28" class="logo-img"/>
+                    <span class="logo-text" >NextRole</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Jobs</a>
+                    <a href="#" class="nav-link">Media</a>
+                    <a href="#" class="nav-link">CV Builder</a>
+                    <a href="/pages/about.html" class="nav-link">About Us</a>
+                    <a href="/pages/contact.html" class="nav-link-active">Contact Us</a>
+                </div>
+                <div class="nav-auth">
+                    <a href="/pages/login.html"><button class="btn-login">Login</button></a>
+                </div>
+            </nav>
+        </header>
+
+
+        <main class="main-content">
+            <!-- Hero -->
+            <section class="hero-section">
+                <div class="hero-container animate-fade-in-top">
+                    <h1 class="hero-title">Get in Touch</h1>
+                    <p class="hero-subtitle" data-i18n="contact-hero-subtitle">Have questions? We're here to help you navigate your career journey.</p>
+                </div>
+            </section>
+
+            <!-- Contact Content -->
+            <section class="contact-section">
+                <div class="contact-container">
+                    <div class="contact-grid">
+                        <!-- Contact Form -->
+                        <div class="contact-form-card animate-fade-in-left">
+                            <h3 class="form-title">Send us a message</h3>
+                            <form class="form-space">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label" data-i18n="contact-name">Full Name</label>
+                                        <input type="text" class="form-input"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" data-i18n="contact-email">Email Address</label>
+                                        <input type="email" class="form-input"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" data-i18n="contact-subject">Subject</label>
+                                    <input type="text" class="form-input"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" data-i18n="contact-message">Message</label>
+                                    <textarea rows="4" class="form-textarea"></textarea>
+                                </div>
+                                <button type="submit" class="btn-submit" data-i18n="contact-submit">Send Message</button>
+                            </form>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="contact-info animate-fade-in-right">
+                            <div class="info-block">
+                                <h3 class="info-title">Contact Information</h3>
+                                <div class="info-list">
+                                    <div class="info-item">
+                                        <div class="info-icon info-icon-primary">
+                                            <img src="/asset/contact-page-icon/mail.svg" alt="mail">
+                                        </div>
+                                        <div class="info-content">
+                                            <h4 class="info-label">Email</h4>
+                                            <p class="info-value">support@nextrole.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon info-icon-emerald">
+                                            <img src="/asset/contact-page-icon/call.svg" alt="call">
+                                        </div>
+                                        <div class="info-content">
+                                            <h4 class="info-label">Phone</h4>
+                                            <p class="info-value">+855 12 345 678</p>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon info-icon-amber">
+                                            <img src="/asset/contact-page-icon/location_on.svg" alt="location_on">
+                                            <!-- <span class="material-symbols-outlined">location_on</span> -->
+                                        </div>
+                                        <div class="info-content">
+                                            <h4 class="info-label">Location</h4>
+                                            <p class="info-value">BKK1, Phnom Penh, Cambodia</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="office-hours-card">
+                                <h4 class="office-hours-title">Office Hours</h4>
+                                <div class="office-hours-list">
+                                    <p class="office-hours-row"><span>Monday - Friday:</span> <span class="office-hours-value">8:00 AM - 5:00 PM</span></p>
+                                    <p class="office-hours-row"><span>Saturday:</span> <span class="office-hours-value">8:00 AM - 12:00 PM</span></p>
+                                    <p class="office-hours-row"><span>Sunday:</span> <span class="office-hours-closed">Closed</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="/asset/logo.svg" alt="NextRole" width="28" height="28" class="logo-img"/>
+                            <h2 class="footer-logo-text">NextRole</h2>
+                        </div>
+                        <p class="footer-desc" data-i18n="footer-desc">Connecting world-class talent with future leaders.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-heading" data-i18n="footer-explore">Explore</h4>
+                        <ul class="footer-links">
+                            <li><a class="footer-link" href="jobs.html">Browse Jobs</a></li>
+                            <li><a class="footer-link" href="#">How It Works</a></li>
+                            <li><a class="footer-link" href="#">Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-heading" data-i18n="footer-legal">Legal</h4>
+                        <ul class="footer-links">
+                            <li><a class="footer-link" href="#">Privacy Policy</a></li>
+                            <li><a class="footer-link" href="#">Terms of Service</a></li>
+                            <li><a class="footer-link" href="#">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2026 NextRole. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
