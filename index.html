@@ -17,8 +17,10 @@
     <nav class="sticky top-0 z-100 bg-white border-b border-border px-10 flex items-center gap-8 h-16 justify-between">
 
       <div class="flex items-center gap-2 text-[18px] font-extrabold text-secondary">
-        <img src="asset/logo.svg" alt="NextRole" width="28" height="28" class="w-7 h-7 hover:scale-110 transition-all duration-75 cursor-pointer"/>
-        NextRole  
+        <a href="index.html" class="flex gap-2">
+          <img src="asset/logo.svg" alt="NextRole" width="28" height="28" class="w-7 h-7 hover:scale-110 transition-all duration-75 cursor-pointer"/>
+          <p>Next Role</p>
+        </a>
       </div>
 
       <div class="flex gap-1">
@@ -37,9 +39,9 @@
     </nav>
 
     <!-- HERO -->
-    <div class="min-h-[calc(100vh-64px)] max-w-[1280px] mx-auto px-20 pt-14 pb-10 grid grid-cols-[1fr_420px] gap-12 items-center">
-      <div>
+    <div class="min-h-[calc(100vh-64px)] max-w-[1280px] mx-auto px-20 pt-14 pb-10 grid grid-cols-[1fr_520px] gap-10 items-center">
 
+      <div>
         <div class="text-[11px] font-bold tracking-[1.5px] text-accent uppercase mb-4">YOUR NEXT AMAZING CAREER MOVE</div>
         
         <h1 class="text-[48px] font-extrabold leading-[1.15] text-secondary mb-4">
@@ -73,21 +75,23 @@
         </div>
       </div>
 
-      <!-- Hero visual -->
-      <div class="relative rounded-[20px] overflow-hidden h-80 bg-gradient-to-br from-[#1a4a3a] via-[#2d7a5a] to-[#1a5a4a] flex items-end p-6">
-        <div class="absolute inset-0 flex items-center justify-center">
-          <span class="text-[96px] font-black text-white/10 tracking-[-4px] select-none">careers</span>
-        </div>
-        <div class="bg-white rounded-[10px] py-2.5 px-4 flex items-center gap-2.5 text-[13px] font-bold text-secondary shadow-[0_4px_16px_rgba(0,0,0,0.2)] z-[1]">
-          <span class="text-[22px]">🇦🇺</span> ABA
-        </div>
-        <div class="absolute bottom-3.5 left-1/2 -translate-x-1/2 flex gap-1.5">
-          <span class="w-5 h-2 rounded bg-white block"></span>
-          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
-          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
-          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
+      <!-- Hero visual — slider with arrows + dots -->
+      <div class="relative rounded-[20px] overflow-hidden h-125" id="heroCarousel">
+
+        <img src="asset/ABA/Hiring1.jpg" alt="" class="hero-slide absolute inset-0 w-full h-full object-cover z-1">
+        <img src="asset/Wing/Hiring1.jpg" alt="" class="hero-slide absolute inset-0 w-full h-full object-cover z-1">
+        <img src="asset/Chip Mong Bank/Hiring1.jpg" alt="" class="hero-slide absolute inset-0 w-full h-full object-cover z-1">
+        
+        <button class="hero-prev absolute top-1/2 -translate-y-1/2 left-2.5 z-10 w-8 h-8 rounded-full bg-black/40 text-white border-0 cursor-pointer text-[22px] leading-none flex items-center justify-center transition-colors duration-200 hover:bg-black/60"><img src="asset/chevron-left.svg" alt="left"></button>
+        <button class="hero-next absolute top-1/2 -translate-y-1/2 right-2.5 z-10 w-8 h-8 rounded-full bg-black/40 text-white border-0 cursor-pointer text-[22px] leading-none flex items-center justify-center transition-colors duration-200 hover:bg-black/60"><img src="asset/chevron-right.svg" alt="right"></button>
+
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          <button class="hero-dot h-2 rounded p-0 border-0 cursor-pointer transition-all duration-300 bg-white w-5"></button>
+          <button class="hero-dot h-2 rounded p-0 border-0 cursor-pointer transition-all duration-300 bg-white/40 w-2"></button>
+          <button class="hero-dot h-2 rounded p-0 border-0 cursor-pointer transition-all duration-300 bg-white/40 w-2"></button>
         </div>
       </div>
+
     </div>
 
     <!-- LATEST JOB OPENINGS -->
@@ -390,5 +394,6 @@
       <div class="border-t border-white/10 pt-5 text-center text-xs text-white/35">© 2026 NextRole. All rights reserved.</div>
     </footer>
 
+    <script src="js/hero-carousel.js"></script>
     </body>
 </html>
