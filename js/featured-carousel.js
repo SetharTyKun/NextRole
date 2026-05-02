@@ -1,6 +1,6 @@
 (function () {
   const track = document.getElementById('featured-track');
-  const SPEED = 0.8; // px per frame
+  const SPEED = 0.2; // px per frame
   let x = window.innerWidth; // start fully off-screen right
   let loopWidth = 0;
 
