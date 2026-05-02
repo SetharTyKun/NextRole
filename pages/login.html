@@ -9,20 +9,15 @@
     <style>
       body { font-family: 'Plus Jakarta Sans', sans-serif; }
       .glass {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
       }
       .mesh-bg {
-        background-color: #3B5BDB;
-        background-image: 
-          radial-gradient(at 0% 0%, hsla(225, 68%, 54%, 1) 0, transparent 50%), 
-          radial-gradient(at 50% 0%, hsla(220, 60%, 40%, 1) 0, transparent 50%), 
-          radial-gradient(at 100% 0%, hsla(15, 94%, 53%, 1) 0, transparent 50%), 
-          radial-gradient(at 0% 100%, hsla(15, 94%, 53%, 1) 0, transparent 50%), 
-          radial-gradient(at 50% 100%, hsla(225, 68%, 54%, 1) 0, transparent 50%), 
-          radial-gradient(at 100% 100%, hsla(220, 60%, 40%, 1) 0, transparent 50%);
+        background: #F8FAFC;
+        background-image: radial-gradient(at 50% 0%, #FFFFFF 0, transparent 70%);
       }
       @keyframes float {
         0% { transform: translateY(0px) rotate(0deg); }
@@ -38,17 +33,17 @@
   <body class="mesh-bg min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
     
     <!-- Decorative floating elements -->
-    <div class="absolute top-[10%] left-[5%] w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute bottom-[10%] right-[5%] w-80 h-80 bg-accent/20 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
+    <div class="absolute top-[10%] left-[5%] w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-[10%] right-[5%] w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
 
     <div class="w-full max-w-[480px] z-10">
       <!-- Logo section -->
       <div class="flex flex-col items-center mb-8 animate-fadeIn">
-        <div class="flex items-center gap-3 text-[24px] font-extrabold text-white mb-2 cursor-pointer" onclick="window.location.href='index.html'">
+        <div class="flex items-center gap-3 text-[24px] font-extrabold text-secondary mb-2 cursor-pointer" onclick="window.location.href='index.html'">
             <img src="../asset/logo.svg" alt="NextRole" width="32" height="32" class="w-8 h-8"/>
           NextRole
         </div>
-        <p class="text-white/70 text-sm font-medium">Welcome back! Please enter your details.</p>
+        <p class="text-secondary/70 text-sm font-medium">Welcome back! Please enter your details.</p>
       </div>
 
       <!-- Login Card -->
@@ -127,7 +122,7 @@
 
       <!-- Back Link -->
       <div class="mt-8 text-center">
-        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-white/80 hover:text-white transition-colors">
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-secondary/70 hover:text-secondary transition-colors">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           Back to Homepage
         </a>
