@@ -14,32 +14,12 @@
   <body class="font-sans text-text bg-white text-[15px] leading-[1.6]">
 
     <!-- NAVBAR -->
-    <nav class="sticky top-0 z-100 bg-white border-b border-border px-10 flex items-center gap-8 h-16 justify-between">
-
-      <div class="flex items-center gap-2 text-[18px] font-extrabold text-secondary">
-        <img src="asset/logo.svg" alt="NextRole" width="28" height="28" class="w-7 h-7 hover:scale-110 transition-all duration-75 cursor-pointer"/>
-        NextRole  
-      </div>
-
-      <div class="flex gap-1">
-        <a href="index.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-primary bg-violet-light transition-colors">Home</a>
-        <a href="/pages/test.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Jobs</a>
-        <a href="/pages/media.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Media</a>
-        <a href="/pages/cv-builder.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">CV Builder</a>
-        <a href="/pages/about.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">About Us</a>
-        <a href="/pages/contact.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Contact Us</a>
-      </div>
-
-      <div class="flex justify-center items-center">
-        <a href="/pages/login.html"><button class="px-5 py-2 cursor-pointer rounded-lg bg-primary text-white text-sm font-semibold hover:brightness-90 hover:scale-105 transition-all duration-75">Login</button></a>
-      </div>
-
-    </nav>
+    <div id="navbar"></div>
 
     <!-- HERO -->
-    <div class="min-h-[calc(100vh-64px)] max-w-[1280px] mx-auto px-20 pt-14 pb-10 grid grid-cols-[1fr_420px] gap-12 items-center">
-      <div>
+    <div class="min-h-[calc(100vh-64px)] max-w-[1280px] mx-auto px-20 pt-14 pb-10 grid grid-cols-[1fr_520px] gap-10 items-center">
 
+      <div>
         <div class="text-[11px] font-bold tracking-[1.5px] text-accent uppercase mb-4">YOUR NEXT AMAZING CAREER MOVE</div>
         
         <h1 class="text-[48px] font-extrabold leading-[1.15] text-secondary mb-4">
@@ -62,9 +42,33 @@
           <div class="flex items-center gap-1">
             <img class="w-3 h-3 cursor-pointer" src="asset/location.svg" alt="location">
             <select class="border-none outline-none font-[inherit] text-sm text-muted bg-transparent cursor-pointer pr-1">
-              <option>All Locations</option>
-              <option>Phnom Penh</option>
-              <option>Siem Reap</option>  
+                <option value="" data-i18n="loc-all">All Locations</option>
+                                    <option value="Phnom Penh" data-i18n="loc-pp">Phnom Penh</option>
+                                    <option value="Banteay Meanchey" data-i18n="loc-bmc">Banteay Meanchey</option>
+                                    <option value="Battambang" data-i18n="loc-btb">Battambang</option>
+                                    <option value="Kampong Cham" data-i18n="loc-kpc">Kampong Cham</option>
+                                    <option value="Kampong Chhnang" data-i18n="loc-kch">Kampong Chhnang</option>
+                                    <option value="Kampong Speu" data-i18n="loc-ksp">Kampong Speu</option>
+                                    <option value="Kampong Thom" data-i18n="loc-kt">Kampong Thom</option>
+                                    <option value="Kampot" data-i18n="loc-kp">Kampot</option>
+                                    <option value="Kandal" data-i18n="loc-kd">Kandal</option>
+                                    <option value="Kep" data-i18n="loc-kep">Kep</option>
+                                    <option value="Koh Kong" data-i18n="loc-kk">Koh Kong</option>
+                                    <option value="Kratié" data-i18n="loc-kr">Kratié</option>
+                                    <option value="Mondulkiri" data-i18n="loc-mk">Mondulkiri</option>
+                                    <option value="Oddar Meanchey" data-i18n="loc-omc">Oddar Meanchey</option>
+                                    <option value="Pailin" data-i18n="loc-pl">Pailin</option>
+                                    <option value="Preah Sihanouk" data-i18n="loc-sh">Preah Sihanouk</option>
+                                    <option value="Preah Vihear" data-i18n="loc-pv">Preah Vihear</option>
+                                    <option value="Prey Veng" data-i18n="loc-pvg">Prey Veng</option>
+                                    <option value="Pursat" data-i18n="loc-ps">Pursat</option>
+                                    <option value="Ratanakiri" data-i18n="loc-rk">Ratanakiri</option>
+                                    <option value="Siem Reap" data-i18n="loc-sr">Siem Reap</option>
+                                    <option value="Stung Treng" data-i18n="loc-st">Stung Treng</option>
+                                    <option value="Svay Rieng" data-i18n="loc-srn">Svay Rieng</option>
+                                    <option value="Takéo" data-i18n="loc-tk">Takéo</option>
+                                    <option value="Tboung Khmum" data-i18n="loc-tkm">Tboung Khmum</option>
+                                    <option value="Remote" data-i18n="loc-remote">Remote</option>
             </select>
           </div>
 
@@ -73,20 +77,42 @@
         </div>
       </div>
 
-      <!-- Hero visual -->
-      <div class="relative rounded-[20px] overflow-hidden h-80 bg-gradient-to-br from-[#1a4a3a] via-[#2d7a5a] to-[#1a5a4a] flex items-end p-6">
-        <div class="absolute inset-0 flex items-center justify-center">
-          <span class="text-[96px] font-black text-white/10 tracking-[-4px] select-none">careers</span>
+      <!-- Hero visual — slider with arrows + dots -->
+      <div class="relative rounded-[20px] overflow-hidden h-125 shadow-lg" id="heroCarousel">
+
+        <img src="asset/Hiring/ABA1.jpg" alt="aba" class="hero-slide absolute inset-0 w-full h-full object-cover z-1">
+        <img src="asset/Hiring/CHIPMONG1.jpg" alt="chipmong" class="hero-slide absolute inset-0 w-full h-full object-cover z-1">
+        <img src="asset/Hiring/Wing1.jpg" alt="wing" class="hero-slide absolute inset-0 w-full h-full object-cover z-1">
+        <img src="asset/Hiring/Tube1.jpg" alt="tube" class="hero-slide absolute inset-0 w-full h-full object-cover z-1">
+
+        <button class="hero-prev absolute top-1/2 -translate-y-1/2 left-2.5 z-10 w-8 h-8 rounded-full bg-black/20 border-0 cursor-pointer text-[22px] leading-none flex items-center justify-center transition-colors duration-200 hover:bg-black/60"><img src="asset/chevron-left.svg" alt="left"></button>
+        <button class="hero-next absolute top-1/2 -translate-y-1/2 right-2.5 z-10 w-8 h-8 rounded-full bg-black/20 border-0 cursor-pointer text-[22px] leading-none flex items-center justify-center transition-colors duration-200 hover:bg-black/60"><img src="asset/chevron-right.svg" alt="right"></button>
+
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          <button class="hero-dot h-2 rounded p-0 border-0 cursor-pointer transition-all duration-300 bg-white w-5"></button>
+          <button class="hero-dot h-2 rounded p-0 border-0 cursor-pointer transition-all duration-300 bg-white/40 w-2"></button>
+          <button class="hero-dot h-2 rounded p-0 border-0 cursor-pointer transition-all duration-300 bg-white/40 w-2"></button>
+          <button class="hero-dot h-2 rounded p-0 border-0 cursor-pointer transition-all duration-300 bg-white/40 w-2"></button>
         </div>
-        <div class="bg-white rounded-[10px] py-2.5 px-4 flex items-center gap-2.5 text-[13px] font-bold text-secondary shadow-[0_4px_16px_rgba(0,0,0,0.2)] z-[1]">
-          <span class="text-[22px]">🇦🇺</span> ABA
-        </div>
-        <div class="absolute bottom-3.5 left-1/2 -translate-x-1/2 flex gap-1.5">
-          <span class="w-5 h-2 rounded bg-white block"></span>
-          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
-          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
-          <span class="w-2 h-2 rounded-full bg-white/40 block"></span>
-        </div>
+      </div>
+
+    </div>
+
+
+    <!-- BANNER -->
+    <div class="bg-bg pt-2 pb-5">
+      <div class="text-[26px] text-center font-extrabold text-secondary mb-5">Top Providers</div>
+      <div class="flex justify-center gap-12">
+        <img src="/asset/Company/ABA.jpg" alt="aba" class="w-20 rounded-xl">
+        <img src="/asset/Company/Acleda Bank.png" alt="acleda" class="w-20">
+        <img src="/asset/Company/Cellcard.jpg" alt="cellcard" class="w-20 rounded-xl">
+        <img src="/asset/Company/Canadia Bank.jpg" alt="canadia" class="w-20 rounded-xl">
+        <img src="/asset/Company/CHIP MONG Bank.jpg" alt="chipmong" class="w-20 rounded-xl"> 
+        <img src="/asset/Company/Tube Coffee.jpg" alt="tubecoffee" class="w-20 rounded-xl">
+        <img src="/asset/Company/StarBuck.jpg" alt="starbuck" class="w-20">
+        <img src="/asset/Company/Wing Bank.jpg" alt="wing" class="w-20 rounded-xl">
+        <img src="/asset/Company/KPMG.jpg" alt="KPMG" class="w-20 rounded-xl">
+        <img src="/asset/Company/Exness.jpg" alt="exness" class="w-20 rounded-xl">
       </div>
     </div>
 
@@ -268,6 +294,9 @@
       </div>
     </div>
 
+    <!-- HOW IT WORKS + SUCCESS STORIES — full screen together -->
+    <div class="min-h-screen flex flex-col justify-center">
+
     <!-- HOW IT WORKS -->
     <div class="bg-violet-light py-16">
       <div class="px-20 max-w-[1280px] mx-auto">
@@ -338,41 +367,59 @@
       </div>
     </div>
 
+    </div>
+
     <!-- FEATURED ON -->
-    <div class="bg-bg py-16">
+    <div class="bg-bg py-18 overflow-hidden">
+
       <div class="px-20 max-w-[1280px] mx-auto">
         <div class="text-[26px] font-extrabold text-secondary mb-1.5 text-center">Featured On</div>
         <p class="text-sm text-muted text-center max-w-[600px] mx-auto mb-9">NextRole is trusted by industry leaders. Our mission is to connect students, recent graduates, and job seekers to the companies that need them most. We are committed to our users and customers.</p>
-        <div class="flex items-center justify-center gap-10 flex-wrap">
-          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold text-muted shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-gradient-to-br from-[#1a3a8a] to-[#2a5aaa]">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="16" fill="#2a5aaa"/><text x="20" y="25" font-size="11" font-weight="800" fill="white" text-anchor="middle" font-family="sans-serif">ABC</text></svg>
-          </div>
-          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-[#1a3a6a]">
-            <span class="text-sm font-extrabold text-white">ABA</span>
-          </div>
-          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-white">
-            <span class="text-[13px] font-extrabold text-success">Smart</span>
-          </div>
-          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold text-muted shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-gradient-to-br from-[#1a5a2a] to-[#2a8a4a]">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M18 4 L32 28 L4 28 Z" fill="rgba(255,255,255,0.8)"/></svg>
-          </div>
-          <div class="w-[72px] h-[72px] rounded-full overflow-hidden border-2 border-border flex items-center justify-center text-[11px] font-bold text-muted shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-gradient-to-br from-[#5a1a8a] to-[#8a3aaa]">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="10" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3"/><circle cx="18" cy="18" r="4" fill="rgba(255,255,255,0.8)"/></svg>
-          </div>
+      </div>
+
+      <!-- Carousel track wrapper — fade edges -->
+      <div id="featured-wrapper" class="relative overflow-hidden" style="mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);">
+        <div id="featured-track" class="flex gap-24 items-center w-max will-change-transform">
+          <!-- Slot 1 --><div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of Education.svg" alt="Ministry of Education" class="h-20 w-auto object-contain transition-opacity duration-300 opacity-80 hover:opacity-100"/></div>
+          <!-- Slot 2 --><div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of Information.png" alt="Ministry of Information" class="h-20 w-auto object-contain transition-opacity duration-300 opacity-80 hover:opacity-100"/></div>
+          <!-- Slot 3 --><div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of JOB.png" alt="Ministry of Labour" class="h-20 w-auto object-contain transition-opacity duration-300 opacity-80 hover:opacity-100"/></div>
+          <!-- Slot 4 --><div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of PTC.png" alt="Ministry of PTC" class="h-20 w-auto object-contain transition-opacity duration-300 opacity-80 hover:opacity-100"/></div>
+          <!-- Slot 5 --><div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of Public Works And Transport.png" alt="Ministry of Public Works" class="h-20 w-auto object-contain transition-opacity duration-300 opacity-80 hover:opacity-100"/></div>
+          <!-- Slot 6 --><div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of Tourism.png" alt="Ministry of Tourism" class="h-20 w-auto object-contain transition-opacity duration-300 opacity-80 hover:opacity-100"/></div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of Education.svg" alt="" aria-hidden="true" class="h-20 w-auto object-contain opacity-80"/></div>
+          <div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of Information.png" alt="" aria-hidden="true" class="h-20 w-auto object-contain opacity-80"/></div>
+          <div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of JOB.png" alt="" aria-hidden="true" class="h-20 w-auto object-contain opacity-80"/></div>
+          <div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of PTC.png" alt="" aria-hidden="true" class="h-20 w-auto object-contain opacity-80"/></div>
+          <div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of Public Works And Transport.png" alt="" aria-hidden="true" class="h-20 w-auto object-contain opacity-80"/></div>
+          <div class="shrink-0 h-24 flex items-center"><img src="asset/Ministry/Ministry of Tourism.png" alt="" aria-hidden="true" class="h-20 w-auto object-contain opacity-80"/></div>
         </div>
       </div>
+
+      <script src="/js/featured-carousel.js"></script>
+
     </div>
 
     <!-- FOOTER -->
     <footer class="bg-secondary text-white/80 px-20 pt-12 pb-6">
+
       <div class="grid grid-cols-[2fr_1fr_1fr] gap-12 mb-10">
+
         <div>
           <div class="flex items-center gap-2 text-[18px] font-extrabold text-white mb-3.5">
             <img src="asset/logo.svg" alt="NextRole" width="28" height="28" class="w-7 h-7"/>
             NextRole
           </div>
           <div class="text-[13px] text-white/55 leading-[1.7] max-w-[280px]">Connecting students and job seekers to the right opportunities. Your next career move starts here.</div>
+          
+          <div class="flex gap-4 mt-5">
+            <img src="asset/twitter-x.svg" alt="x" class="cursor-pointer">
+            <img src="asset/facebook.svg" alt="facebook" class="cursor-pointer">
+            <img src="asset/instagram.svg" alt="instagram" class="cursor-pointer">
+            <img src="asset/linkedin.svg" alt="linkedin" class="cursor-pointer">
+          </div>
         </div>
+
         <div>
           <h4 class="text-sm font-bold text-white mb-4">Explore</h4>
           <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">About Us</a>
@@ -380,15 +427,22 @@
           <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Media</a>
           <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Resources</a>
         </div>
+
         <div>
           <h4 class="text-sm font-bold text-white mb-4">Login</h4>
           <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Posting Table</a>
           <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Job Seeker</a>
           <a href="#" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Employer</a>
         </div>
+
       </div>
+
       <div class="border-t border-white/10 pt-5 text-center text-xs text-white/35">© 2026 NextRole. All rights reserved.</div>
+
     </footer>
 
+    <script src="js/hero-carousel.js"></script>
+    <script src="js/hero-lightbox.js"></script>
+    <script src="/components/navbar.js"></script>
     </body>
 </html>
