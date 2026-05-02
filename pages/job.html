@@ -43,7 +43,7 @@
 
         <main class="flex-grow">
             <!-- Hero Search -->
-            <section class="bg-primary py-16 px-6 relative overflow-hidden">
+            <section class="bg-secondary py-16 px-6 relative overflow-hidden">
                 <div class="absolute inset-0 opacity-10">
                     <div
                         class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl -translate-x-1/2 -translate-y-1/2">
@@ -221,7 +221,7 @@
                                     <input type="range" class="w-full accent-primary">
                                     <div class="flex justify-between text-xs text-muted mt-2 font-bold">
                                         <span>$0</span>
-                                        <span>$20k+</span>
+                                        <span id="salary-max-label">$20k+</span>
                                     </div>
                                 </div>
 
@@ -229,8 +229,8 @@
                                     <label
                                         class="text-sm font-bold text-muted uppercase tracking-tighter block mb-3"
                                         data-i18n="filter-experience">Experience Level</label>
-                                    <select
-                                        class="w-full rounded-xl border-border text-sm focus:ring-primary">
+                                    <select id="filter-experience"
+                                        class="w-full rounded-xl border-border text-sm focus:ring-primary cursor-pointer">
                                         <option>All Levels</option>
                                         <option>Entry Level</option>
                                         <option>Mid Level</option>
@@ -246,7 +246,7 @@
 
                         <!-- Google Job Card -->
                         <div class="job-card bg-surface p-6 rounded-3xl shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all group"
-                            data-category="Engineering" data-type="Full-time">
+                            data-category="Engineering" data-type="Full-time" data-experience="Mid Level">
                             <div class="flex flex-col md:flex-row gap-6">
                                 <div
                                     class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0">
@@ -297,7 +297,7 @@
 
                         <!-- Job Card 1 -->
                         <div class="job-card bg-surface p-6 rounded-3xl shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all group"
-                            data-category="Design" data-type="Full-time">
+                            data-category="Design" data-type="Full-time" data-experience="Senior Level">
                             <div class="flex flex-col md:flex-row gap-6">
                                 <div
                                     class="w-16 h-16 rounded-2xl bg-orange-100 flex items-center justify-center shrink-0">
@@ -332,9 +332,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-6 border-t border-border">
-                                        <button class="text-primary font-extrabold text-sm hover:underline cursor-pointer"
-                                            onclick="window.location.href='job-detail.html?id=1'"
-                                            data-i18n="job-details">View Details</button>
+                                        <a href="job_details_ux_designer.html" class="text-primary font-extrabold text-sm hover:underline cursor-pointer" data-i18n="job-details">View Details</a>
                                         <button
                                             class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer"
                                             onclick="window.handleApplyNow('Senior UX Designer')"
@@ -346,7 +344,7 @@
 
                         <!-- Job Card 2 -->
                         <div class="job-card bg-surface p-6 rounded-3xl shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all group"
-                            data-category="Engineering" data-type="Remote">
+                            data-category="Engineering" data-type="Remote" data-experience="Mid Level">
                             <div class="flex flex-col md:flex-row gap-6">
                                 <div
                                     class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center shrink-0">
@@ -381,9 +379,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-6 border-t border-border">
-                                        <button class="text-primary font-extrabold text-sm hover:underline cursor-pointer"
-                                            onclick="window.location.href='job-detail.html?id=1'"
-                                            data-i18n="job-details">View Details</button>
+                                        <a href="job_details_backend_developer.html" class="text-primary font-extrabold text-sm hover:underline cursor-pointer" data-i18n="job-details">View Details</a>
                                         <button
                                             class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer"
                                             onclick="window.handleApplyNow('Backend Developer (Node.js)')"
@@ -395,7 +391,7 @@
 
                         <!-- Job Card 3 -->
                         <div class="job-card bg-surface p-6 rounded-3xl shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all group"
-                            data-category="Design" data-type="Full-time">
+                            data-category="Design" data-type="Full-time" data-experience="Entry Level">
                             <div class="flex flex-col md:flex-row gap-6">
                                 <div
                                     class="w-16 h-16 rounded-2xl bg-rose-100 flex items-center justify-center shrink-0">
@@ -430,9 +426,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-6 border-t border-border">
-                                        <button class="text-primary font-extrabold text-sm hover:underline cursor-pointer"
-                                            onclick="window.location.href='job-detail.html?id=1'"
-                                            data-i18n="job-details">View Details</button>
+                                        <a href="job_details_product_designer.html" class="text-primary font-extrabold text-sm hover:underline cursor-pointer" data-i18n="job-details">View Details</a>
                                         <button
                                             class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer"
                                             onclick="window.handleApplyNow('Product Designer')"
@@ -444,7 +438,7 @@
 
                         <!-- Job Card 4 -->
                         <div class="job-card bg-surface p-6 rounded-3xl shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all group"
-                            data-category="Marketing" data-type="Full-time">
+                            data-category="Marketing" data-type="Full-time" data-experience="Senior Level">
                             <div class="flex flex-col md:flex-row gap-6">
                                 <div
                                     class="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center shrink-0">
@@ -479,9 +473,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-6 border-t border-border">
-                                        <button class="text-primary font-extrabold text-sm hover:underline cursor-pointer"
-                                            onclick="window.location.href='job-detail.html?id=1'"
-                                            data-i18n="job-details">View Details</button>
+                                        <a href="job_details_marketing_manager.html" class="text-primary font-extrabold text-sm hover:underline cursor-pointer" data-i18n="job-details">View Details</a>
                                         <button
                                             class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer"
                                             onclick="window.handleApplyNow('Marketing Manager')"
@@ -493,7 +485,7 @@
 
                         <!-- Job Card 5 -->
                         <div class="job-card bg-surface p-6 rounded-3xl shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all group"
-                            data-category="Engineering" data-type="Contract">
+                            data-category="Engineering" data-type="Contract" data-experience="Mid Level">
                             <div class="flex flex-col md:flex-row gap-6">
                                 <div
                                     class="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center shrink-0">
@@ -528,9 +520,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-6 border-t border-border">
-                                        <button class="text-primary font-extrabold text-sm hover:underline cursor-pointer"
-                                            onclick="window.location.href='job-detail.html?id=1'"
-                                            data-i18n="job-details">View Details</button>
+                                        <a href="job_details_qa_engineer.html" class="text-primary font-extrabold text-sm hover:underline cursor-pointer" data-i18n="job-details">View Details</a>
                                         <button
                                             class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer"
                                             onclick="window.handleApplyNow('QA Engineer')" data-i18n="job-apply">Apply
@@ -542,7 +532,7 @@
 
                         <!-- Job Card 6 -->
                         <div class="job-card bg-surface p-6 rounded-3xl shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all group"
-                            data-category="Support" data-type="Full-time">
+                            data-category="Support" data-type="Full-time" data-experience="Entry Level">
                             <div class="flex flex-col md:flex-row gap-6">
                                 <div
                                     class="w-16 h-16 rounded-2xl bg-cyan-100 flex items-center justify-center shrink-0">
@@ -577,9 +567,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-6 border-t border-border">
-                                        <button class="text-primary font-extrabold text-sm hover:underline cursor-pointer"
-                                            onclick="window.location.href='job-detail.html?id=1'"
-                                            data-i18n="job-details">View Details</button>
+                                        <a href="job_details_hr_specialist.html" class="text-primary font-extrabold text-sm hover:underline cursor-pointer" data-i18n="job-details">View Details</a>
                                         <button
                                             class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer"
                                             onclick="window.handleApplyNow('HR Specialist')" data-i18n="job-apply">Apply
@@ -591,7 +579,7 @@
 
                         <!-- Job Card 7 -->
                         <div class="job-card bg-surface p-6 rounded-3xl shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all group"
-                            data-category="Data Science" data-type="Full-time">
+                            data-category="Data Science" data-type="Full-time" data-experience="Mid Level">
                             <div class="flex flex-col md:flex-row gap-6">
                                 <div
                                     class="w-16 h-16 rounded-2xl bg-violet-100 flex items-center justify-center shrink-0">
@@ -626,9 +614,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-6 border-t border-border">
-                                        <button class="text-primary font-extrabold text-sm hover:underline cursor-pointer"
-                                            onclick="window.location.href='job-detail.html?id=1'"
-                                            data-i18n="job-details">View Details</button>
+                                        <a href="job_details_data_analyst.html" class="text-primary font-extrabold text-sm hover:underline cursor-pointer" data-i18n="job-details">View Details</a>
                                         <button
                                             class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer"
                                             onclick="window.handleApplyNow('Data Analyst')" data-i18n="job-apply">Apply
@@ -647,7 +633,7 @@
 
     <script src="/components/navBar.js"></script>
     <script src="/components/footer.js"></script>
-    <script src="main.js"></script>
+    <script src="/js/job-filter.js"></script>
 </body>
 
 </html>
