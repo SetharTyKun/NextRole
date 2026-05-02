@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+        <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Login | NextRole — Your Next Career Move</title>
@@ -50,7 +50,7 @@
       <div class="glass rounded-[32px] p-10 shadow-2xl animate-slideUp">
         <h1 class="text-[28px] font-bold text-secondary mb-8">Sign In</h1>
         
-        <form class="space-y-6">
+        <form class="space-y-6" onsubmit="handleLogin(event)">
           <!-- Email Field -->
           <div class="space-y-2">
             <label for="email" class="text-sm font-bold text-secondary/70 ml-1">Email Address</label>
@@ -122,12 +122,26 @@
 
       <!-- Back Link -->
       <div class="mt-8 text-center">
-        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-secondary/70 hover:text-secondary transition-colors">
+        <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-bold text-secondary/70 hover:text-secondary transition-colors">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           Back to Homepage
         </a>
       </div>
     </div>
 
+    <script>
+      function handleLogin(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        if (email === 'pisethpanhavorn544@gmail.com' && password === '12345678') {
+          localStorage.setItem('isLoggedIn', 'true');
+          window.location.href = '../index.html';
+        } else {
+          alert('Invalid email or password. Please try again.');
+        }
+      }
+    </script>
   </body>
 </html>

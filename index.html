@@ -14,17 +14,17 @@
   <body class="font-sans text-text bg-white text-[15px] leading-[1.6]">
 
     <!-- NAVBAR -->
-    <nav class="sticky top-0 z-100 bg-white border-b border-border px-10 flex items-center gap-8 h-16 justify-between">
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 px-10 flex items-center h-16 justify-between">
 
-      <div class="flex items-center gap-2 text-[18px] font-extrabold text-secondary">
-        <a href="index.html" class="flex gap-2">
+      <div class="flex items-center gap-2 text-[18px] font-extrabold text-slate-800 w-[200px]">
+        <a href="index.html" class="flex gap-2 items-center">
           <img src="asset/logo.svg" alt="NextRole" width="28" height="28" class="w-7 h-7 hover:scale-110 hover:origin-center hover:rotate-90 transition-all duration-75 cursor-pointer"/>
-          <p>Next Role</p>
+          <p style="font-family: 'Plus Jakarta Sans', sans-serif;">NextRole</p>
         </a>
       </div>
 
-      <div class="flex gap-1">
-        <a href="index.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-primary bg-violet-light transition-colors">Home</a>
+      <div class="flex gap-1 justify-center">
+        <a href="index.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-white bg-primary transition-colors">Home</a>
         <a href="/pages/job.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Jobs</a>
         <a href="/pages/media.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Media</a>
         <a href="/pages/cv-builder.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">CV Builder</a>
@@ -32,10 +32,17 @@
         <a href="/pages/contact.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Contact Us</a>
       </div>
 
-      <div class="flex justify-center items-center">
-        <a href="/pages/login.html"><button class="px-5 py-2 cursor-pointer rounded-lg bg-primary text-white text-sm font-semibold hover:brightness-90 hover:scale-105 transition-all duration-75">Login</button></a>
+      <div class="flex justify-end items-center w-[200px]">
+        <div id="login-section" class="flex">
+          <a href="/pages/login.html"><button class="px-5 py-2 cursor-pointer rounded-lg bg-primary text-white text-sm font-semibold hover:brightness-90 hover:scale-105 transition-all duration-75 shadow-[0_4px_14px_rgba(59,91,219,0.3)]">Login</button></a>
+        </div>
+        
+        <div id="auth-section" class="hidden items-center gap-4 ml-1">
+          <div class="w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center cursor-pointer border-2 border-white ring-2 ring-primary/80 shadow-sm hover:shadow-md transition-all text-[15px]" onclick="localStorage.removeItem('isLoggedIn'); window.location.reload();" title="Click to Logout">
+            P
+          </div>
+        </div>
       </div>
-
     </nav>
 
     <!-- HERO -->
@@ -465,5 +472,21 @@
 
     <script src="js/hero-carousel.js"></script>
     <script src="js/hero-lightbox.js"></script>
-    </body>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+          const loginSec = document.getElementById('login-section');
+          const authSec = document.getElementById('auth-section');
+          if (loginSec) {
+            loginSec.classList.add('hidden');
+            loginSec.classList.remove('flex');
+          }
+          if (authSec) {
+            authSec.classList.remove('hidden');
+            authSec.classList.add('flex');
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
