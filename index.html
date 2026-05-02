@@ -25,7 +25,7 @@
 
       <div class="flex gap-1">
         <a href="index.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-primary bg-violet-light transition-colors">Home</a>
-        <a href="/pages/test.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Jobs</a>
+        <a href="/pages/job.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Jobs</a>
         <a href="/pages/media.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">Media</a>
         <a href="/pages/cv-builder.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">CV Builder</a>
         <a href="/pages/about.html" class="px-3 py-1.5 rounded-md text-sm font-medium text-muted hover:text-primary hover:bg-violet-light transition-colors">About Us</a>
@@ -98,29 +98,21 @@
 
 
     <!-- BANNER -->
-    <div class="bg-bg py-6 overflow-hidden" id="banner-wrapper" style="mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);">
-      <div class="text-[26px] text-center font-extrabold text-secondary">Top Providers</div>
-      <div id="banner-track" class="flex py-4 gap-16 items-center w-max will-change-transform">
-        <img src="asset/Company/ABA.jpg" alt="ABA" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/Acleda Bank.png" alt="Acleda Bank" class="w-20 h-20 object-contain shrink-0">
-        <img src="asset/Company/CHIP MONG Bank.jpg" alt="Chip Mong Bank" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/Canadia Bank.jpg" alt="Chip Mong Bank" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/Tube Coffee.jpg" alt="Tube Coffee" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/Wing Bank.jpg" alt="Wing Bank" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/Koi The.jpg" alt="Koi The" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/StarBuck.jpg" alt="Starbucks" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/Lucky.jpg" alt="Lucky" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/STMARKET.jpg" alt="ST Market" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/EY.png" alt="ST Market" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/ICBC.jpg" alt="ST Market" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/KPMG.jpg" alt="ST Market" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/PWC.jpg" alt="ST Market" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/Exness.jpg" alt="Exness" class="w-20 h-20 rounded-full object-cover shrink-0">
-        <img src="asset/Company/Cellcard.jpg" alt="Cellcard"  class="w-20 h-20 rounded-full object-cover shrink-0">
+    <div class="bg-bg pt-2 pb-5">
+      <div class="text-[26px] text-center font-extrabold text-secondary mb-5">Top Providers</div>
+      <div class="flex justify-center gap-12">
+        <img src="/asset/Company/ABA.jpg" alt="aba" class="w-20 rounded-xl">
+        <img src="/asset/Company/Acleda Bank.png" alt="acleda" class="w-20">
+        <img src="/asset/Company/Cellcard.jpg" alt="cellcard" class="w-20 rounded-xl">
+        <img src="/asset/Company/Canadia Bank.jpg" alt="canadia" class="w-20 rounded-xl">
+        <img src="/asset/Company/CHIP MONG Bank.jpg" alt="chipmong" class="w-20 rounded-xl"> 
+        <img src="/asset/Company/Tube Coffee.jpg" alt="tubecoffee" class="w-20 rounded-xl">
+        <img src="/asset/Company/StarBuck.jpg" alt="starbuck" class="w-20">
+        <img src="/asset/Company/Wing Bank.jpg" alt="wing" class="w-20 rounded-xl">
+        <img src="/asset/Company/KPMG.jpg" alt="KPMG" class="w-20 rounded-xl">
+        <img src="/asset/Company/Exness.jpg" alt="exness" class="w-20 rounded-xl">
       </div>
     </div>
-    <script src="/js/banner-carousel.js"></script>
-
 
     <!-- LATEST JOB OPENINGS -->
     <div class="py-16 px-20 max-w-[1280px] mx-auto">
@@ -300,6 +292,9 @@
       </div>
     </div>
 
+    <!-- HOW IT WORKS + SUCCESS STORIES — full screen together -->
+    <div class="min-h-screen flex flex-col justify-center">
+
     <!-- HOW IT WORKS -->
     <div class="bg-violet-light py-16">
       <div class="px-20 max-w-[1280px] mx-auto">
@@ -368,6 +363,8 @@
           </div>
         </div>
       </div>
+    </div>
+
     </div>
 
     <!-- FEATURED ON -->
@@ -443,5 +440,6 @@
     </footer>
 
     <script src="js/hero-carousel.js"></script>
+    <script src="js/hero-lightbox.js"></script>
     </body>
 </html>
