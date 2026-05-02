@@ -22,7 +22,6 @@
         }
 
         .preview-container {
-            aspect-ratio: 1 / 1.414;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
 
@@ -53,7 +52,7 @@
                         editor with AI-powered skill matching.</p>
                 </div>
 
-                <div class="flex flex-col lg:grid lg:grid-cols-12 gap-8">
+                <div class="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:items-stretch">
                     <!-- Left Sidebar: Steps & Matching (Moves to top on mobile) -->
                     <div class="lg:col-span-3 space-y-6">
                         <!-- Mobile Step Indicator (Visible only on mobile) -->
@@ -82,8 +81,7 @@
                                             <span class="material-symbols-outlined text-lg">person</span>
                                             <span data-i18n="cv-step-personal">Personal Info</span>
                                         </div>
-                                        <span
-                                            class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+                                        <span class="step-checkmark material-symbols-outlined text-green-500 text-sm invisible">check_circle</span>
                                     </button>
                                     <button onclick="window.switchStep('experience')" data-step="experience"
                                         class="step-item flex items-center justify-between px-6 py-4 text-sm font-bold text-muted hover:bg-bg transition-all group cursor-pointer">
@@ -91,6 +89,7 @@
                                             <span class="material-symbols-outlined text-lg">work</span>
                                             <span data-i18n="cv-step-experience">Experience</span>
                                         </div>
+                                        <span class="step-checkmark material-symbols-outlined text-green-500 text-sm invisible">check_circle</span>
                                     </button>
                                     <button onclick="window.switchStep('education')" data-step="education"
                                         class="step-item flex items-center justify-between px-6 py-4 text-sm font-bold text-muted hover:bg-bg transition-all group cursor-pointer">
@@ -98,6 +97,7 @@
                                             <span class="material-symbols-outlined text-lg">school</span>
                                             <span data-i18n="cv-step-education">Education</span>
                                         </div>
+                                        <span class="step-checkmark material-symbols-outlined text-green-500 text-sm invisible">check_circle</span>
                                     </button>
                                     <button onclick="window.switchStep('skills')" data-step="skills"
                                         class="step-item flex items-center justify-between px-6 py-4 text-sm font-bold text-muted hover:bg-bg transition-all group cursor-pointer">
@@ -105,6 +105,7 @@
                                             <span class="material-symbols-outlined text-lg">psychology</span>
                                             <span data-i18n="cv-step-skills">Skills</span>
                                         </div>
+                                        <span class="step-checkmark material-symbols-outlined text-green-500 text-sm invisible">check_circle</span>
                                     </button>
                                     <button
                                         class="flex items-center gap-3 px-6 py-4 text-sm font-bold text-primary border-t border-border hover:bg-bg transition-all cursor-pointer">
@@ -115,47 +116,6 @@
                             </div>
                         </div>
 
-                        <!-- Skill Match Card -->
-                        <div
-                            class="bg-secondary rounded-2xl p-6 text-white shadow-xl relative overflow-hidden group">
-                            <div
-                                class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
-                                <span class="material-symbols-outlined text-6xl">leaderboard</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-4" data-i18n="cv-skill-match-title">Skill Match</h3>
-                            <div class="space-y-4 mb-6">
-                                <div>
-                                    <div class="flex justify-between text-xs mb-1.5 font-bold">
-                                        <span class="text-white/60">Product Designer</span>
-                                        <span class="text-cyan-400">94%</span>
-                                    </div>
-                                    <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                        <div class="h-full bg-cyan-400 rounded-full" style="width: 94%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-xs mb-1.5 font-bold">
-                                        <span class="text-white/60">UX Researcher</span>
-                                        <span class="text-emerald-400">82%</span>
-                                    </div>
-                                    <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                        <div class="h-full bg-emerald-400 rounded-full" style="width: 82%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-xs mb-1.5 font-bold">
-                                        <span class="text-white/60">Frontend Dev</span>
-                                        <span class="text-orange-400">45%</span>
-                                    </div>
-                                    <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                        <div class="h-full bg-orange-400 rounded-full" style="width: 45%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button
-                                class="w-full bg-white/10 hover:bg-white/20 border border-white/10 py-3 rounded-xl text-sm font-bold transition-all cursor-pointer"
-                                data-i18n="cv-optimize-btn">Optimize My CV</button>
-                        </div>
                     </div>
 
                     <div class="lg:col-span-5 relative min-h-[600px]">
@@ -358,7 +318,7 @@
                     </div>
 
                     <!-- Right Panel: Live Preview (Sticky on Desktop, Toggleable on Mobile) -->
-                    <div class="lg:col-span-4 lg:sticky lg:top-24 h-fit">
+                    <div class="lg:col-span-4 lg:sticky lg:top-24 flex flex-col">
                         <!-- Mobile Preview Toggle -->
                         <button onclick="window.toggleMobilePreview()"
                             class="lg:hidden w-full mb-4 py-3 bg-bg rounded-xl text-muted font-bold text-sm flex items-center justify-center gap-2 border border-border cursor-pointer">
@@ -366,34 +326,9 @@
                             <span id="preview-toggle-text">Show Live Preview</span>
                         </button>
 
-                        <div id="preview-container" class="hidden lg:block space-y-6 animate__animated animate__fadeIn">
-                            <div class="flex items-center justify-between px-2">
-                                <h3 class="text-sm font-bold text-text flex items-center gap-2"
-                                    data-i18n="cv-preview-title">
-                                    Live Preview
-                                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                </h3>
-                                <div class="flex items-center gap-4">
-                                    <span class="text-[10px] font-medium text-muted" data-i18n="cv-last-saved">Last
-                                        auto-saved 2 mins ago</span>
-                                    <button
-                                        class="material-symbols-outlined text-muted text-lg hover:text-primary transition-colors cursor-pointer"
-                                        data-i18n="cv-fullscreen">fullscreen</button>
-                                </div>
-                            </div>
-
-                            <!-- Template Switcher -->
-                            <div class="bg-border/40 p-1 rounded-xl flex gap-1">
-                                <button onclick="window.switchTemplate('designer')"
-                                    class="flex-1 py-2 text-xs font-bold bg-surface rounded-lg shadow-sm cursor-pointer"
-                                    data-i18n="cv-designer-tab">Designer CV</button>
-                                <button onclick="window.switchTemplate('developer')"
-                                    class="flex-1 py-2 text-xs font-bold text-muted hover:bg-surface/50 rounded-lg cursor-pointer"
-                                    data-i18n="cv-developer-tab">Developer CV</button>
-                            </div>
-
+                        <div id="preview-container" class="hidden lg:flex flex-col flex-1 animate__animated animate__fadeIn">
                             <!-- The Actual CV Page -->
-                            <div class="preview-container bg-surface rounded-xl overflow-hidden relative group">
+                            <div class="preview-container bg-surface rounded-xl overflow-hidden relative group flex-1">
                                 <div class="p-8 h-full flex flex-col">
                                     <div class="flex items-start justify-between mb-8">
                                         <div>
@@ -515,16 +450,42 @@
     <script src="main.js"></script>
     <script>
         // Step Management
+        const stepOrder = ['personal', 'experience', 'education', 'skills'];
+        const completedSteps = new Set();
+        let currentStepId = 'personal';
+
         window.switchStep = (stepId) => {
+            const prevIndex = stepOrder.indexOf(currentStepId);
+            const nextIndex = stepOrder.indexOf(stepId);
+
+            // Mark the step as completed when moving forward
+            if (nextIndex > prevIndex) {
+                completedSteps.add(currentStepId);
+            }
+            currentStepId = stepId;
+
+            const stepMap = { 'personal': 1, 'experience': 2, 'education': 3, 'skills': 4 };
+
             document.querySelectorAll('.step-item').forEach(el => {
+                const step = el.getAttribute('data-step');
                 el.classList.remove('active');
                 el.classList.add('text-muted');
-                if (el.getAttribute('data-step') === stepId) {
+
+                // Show or hide the checkmark
+                const checkmark = el.querySelector('.step-checkmark');
+                if (checkmark) {
+                    if (completedSteps.has(step)) {
+                        checkmark.classList.remove('invisible');
+                    } else {
+                        checkmark.classList.add('invisible');
+                    }
+                }
+
+                if (step === stepId) {
                     el.classList.add('active');
                     el.classList.remove('text-muted');
 
-                    const stepName = el.querySelector('[data-i18n]').innerText;
-                    const stepMap = { 'personal': 1, 'experience': 2, 'education': 3, 'skills': 4 };
+                    const stepName = el.querySelector('[data-i18n]')?.innerText || '';
                     const indicator = document.getElementById('mobile-current-step');
                     if (indicator) indicator.innerText = stepName;
                     const num = document.getElementById('mobile-step-num');
