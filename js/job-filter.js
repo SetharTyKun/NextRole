@@ -8,7 +8,6 @@
     const categoryBoxes    = document.querySelectorAll('input[name="category"]');
     const salarySlider     = document.querySelector('input[type="range"]');
     const salaryMaxLabel   = document.getElementById('salary-max-label');
-    const experienceSelect = document.getElementById('filter-experience');
     const cards            = document.querySelectorAll('.job-card');
     const cardFeed         = cards.length ? cards[0].parentElement : null;
 
@@ -72,16 +71,14 @@
             .filter(cb => cb.checked)
             .map(cb => cb.value.toLowerCase());
 
-        const maxSalary    = salarySlider    ? parseInt(salarySlider.value)    : SALARY_MAX;
-        const expFilter    = experienceSelect ? experienceSelect.value         : 'All Levels';
+        const maxSalary    = salarySlider ? parseInt(salarySlider.value) : SALARY_MAX;
 
         let visibleCount = 0;
 
         cards.forEach(card => {
-            const cardType       = (card.dataset.type       || '').toLowerCase();
-            const cardCategory   = (card.dataset.category   || '').toLowerCase();
-            const cardExperience = (card.dataset.experience || '').toLowerCase();
-            const cardTitle      = (card.querySelector('h4')?.textContent || '').toLowerCase();
+            const cardType     = (card.dataset.type     || '').toLowerCase();
+            const cardCategory = (card.dataset.category || '').toLowerCase();
+            const cardTitle    = (card.querySelector('h4')?.textContent || '').toLowerCase();
             const cardCompany    = iconSibling(card, 'apartment').toLowerCase();
             const cardLocation   = iconSibling(card, 'location_on');
             const cardSalaryMax  = parseMaxSalary(card);
@@ -110,11 +107,6 @@
             // 5. Salary max
             if (maxSalary < SALARY_MAX && cardSalaryMax > maxSalary) {
                 return hide(card);
-            }
-
-            // 6. Experience level
-            if (expFilter !== 'All Levels' && cardExperience) {
-                if (!cardExperience.includes(expFilter.toLowerCase())) return hide(card);
             }
 
             show(card);
@@ -158,9 +150,8 @@
         if (filterContract) filterContract.checked = false;
         if (filterRemote)   filterRemote.checked   = false;
         categoryBoxes.forEach(cb => cb.checked = false);
-        if (salarySlider)     { salarySlider.value = SALARY_MAX; }
-        if (salaryMaxLabel)   { salaryMaxLabel.textContent = '$20k+'; }
-        if (experienceSelect) { experienceSelect.value = 'All Levels'; }
+        if (salarySlider)   { salarySlider.value = SALARY_MAX; }
+        if (salaryMaxLabel) { salaryMaxLabel.textContent = '$20k+'; }
         applyFilters();
     };
 
@@ -173,18 +164,20 @@
     window.handleJobsSearch    = applyFilters;
     window.handleFilterChange  = applyFilters;
 
-    // ── Wire up experience select ────────────────────────────────────────────
-    if (experienceSelect) {
-        experienceSelect.addEventListener('change', applyFilters);
-    }
-
-    // ── Read URL params (coming from home page search) ───────────────────────
+    // ── Read URL params (coming from home page search or category cards) ────────
     function readUrlParams() {
         const params = new URLSearchParams(window.location.search);
-        const q   = params.get('q');
-        const loc = params.get('location');
+        const q        = params.get('q');
+        const loc      = params.get('location');
+        const category = params.get('category');
         if (q   && searchQuery)    searchQuery.value    = q;
         if (loc && searchLocation) searchLocation.value = loc;
+        if (category) {
+            if (filterFulltime) filterFulltime.checked = false;
+            categoryBoxes.forEach(cb => {
+                if (cb.value.toLowerCase() === category.toLowerCase()) cb.checked = true;
+            });
+        }
     }
 
     // ── Init ─────────────────────────────────────────────────────────────────
