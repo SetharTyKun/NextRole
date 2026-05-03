@@ -26,14 +26,12 @@ class SiteFooter extends HTMLElement {
             <a href="/pages/about.html" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">About Us</a>
             <a href="/pages/job.html" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Jobs</a>
             <a href="/pages/media.html" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Media</a>
-            <a href="/pages/resources.html" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Resources</a>
           </div>
 
           <div>
-            <h4 class="text-sm font-bold text-white mb-4">Login</h4>
-            <a href="/pages/login.html?role=employer" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Posting Table</a>
-            <a href="/pages/login.html?role=seeker" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Job Seeker</a>
-            <a href="/pages/login.html?role=employer" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Employer</a>
+            <h4 class="text-sm font-bold text-white mb-4">Account</h4>
+            <a href="/pages/login.html" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Login</a>
+            <a href="/pages/register.html" class="block text-[13px] text-white/55 mb-2.5 hover:text-white transition-colors">Register</a>
           </div>
 
         </div>
